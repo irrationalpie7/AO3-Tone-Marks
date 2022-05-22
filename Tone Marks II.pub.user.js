@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Tone Marks II
 // @namespace    http://tampermonkey.net/
-// @version      2.0.4
+// @version      2.0.5
 // @description  Add tone marks on Ao3 works
 // @author       irrationalpie7
 // @match        https://archiveofourown.org/*
@@ -163,7 +163,8 @@ function doReplacements(element) {
   if (hasFandom('King\'s Avatar|Quánzhí Gāoshǒu', workFandoms)) {
     replaceAll(kingsAvatarReplacements(), simplifiedElement);
   }
-  if (hasFandom('TGCF|Tiān Guān Cì Fú|Heaven Official\'s Blessing')) {
+  if (hasFandom(
+          'TGCF|Tiān Guān Cì Fú|Heaven Official\'s Blessing', workFandoms)) {
     replaceAll(tgcfReplacements(), simplifiedElement);
   }
   replaceAll(genericReplacements(), simplifiedElement);
