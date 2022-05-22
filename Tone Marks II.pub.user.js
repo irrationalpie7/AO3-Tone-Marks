@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Tone Marks II
 // @namespace    http://tampermonkey.net/
-// @version      2.0.3
+// @version      2.0.4
 // @description  Add tone marks on Ao3 works
 // @author       irrationalpie7
 // @match        https://archiveofourown.org/*
@@ -162,6 +162,9 @@ function doReplacements(element) {
   }
   if (hasFandom('King\'s Avatar|Quánzhí Gāoshǒu', workFandoms)) {
     replaceAll(kingsAvatarReplacements(), simplifiedElement);
+  }
+  if (hasFandom('TGCF|Tiān Guān Cì Fú|Heaven Official\'s Blessing')) {
+    replaceAll(tgcfReplacements(), simplifiedElement);
   }
   replaceAll(genericReplacements(), simplifiedElement);
 
@@ -1325,337 +1328,621 @@ function wordOfHonorReplacements() {
 }
 
 /**
- * Hard-coded Word of Honor pinyin replacement rules.
+ * Hard-coded King's Avatar pinyin replacement rules.
  */
 function kingsAvatarReplacements() {
   return `
-# King's avatar
-## based mostly off [oakleaf's guide](https://oakleaffic.dreamwidth.org/1363.html)
+      # King's avatar
+      ## based mostly off [oakleaf's guide](https://oakleaffic.dreamwidth.org/1363.html)
 
-# Human Characters, with:
-## - Character Name
-## - Team(s) they’ve played for,
-## - Class(es) they’ve played,
-## - Major Avatar’s they’ve played,
-## - Pinyin (for easier tags)
-## - Hanzi
+      # Human Characters, with:
+      ## - Character Name
+      ## - Team(s) they’ve played for,
+      ## - Class(es) they’ve played,
+      ## - Major Avatar’s they’ve played,
+      ## - Pinyin (for easier tags)
+      ## - Hanzi
 
-# A
-## An Wenyi (Tyrannical Ambition, Happy, Cleric, Little Cold Hands) - Ān Wényì, 安文逸
-An Wenyi|Ān Wényì
+      # A
+      ## An Wenyi (Tyrannical Ambition, Happy, Cleric, Little Cold Hands) - Ān Wényì, 安文逸
+      An Wenyi|Ān Wényì
 
-# B
-## Bai Yanfei (Tyranny, Elementalist, Rota) - Bái Yánfēi
-Bai Yanfei|Bái Yánfēi
-## ?
-bai shu|Bái Shù
-## Bao Rongxing (Happy, Brawler, Steamed Bun Invasion) - Bāo Róngxìng, 包荣兴
-Bao Rongxing|Bāo Róngxìng
-## Bound Boat (Blue Brook Guild, Cleric, Bound Boat) - Xì Zhōu | Bound Boat, 系舟
-xi zhou|Xì Zhōu
+      # B
+      ## Bai Yanfei (Tyranny, Elementalist, Rota) - Bái Yánfēi
+      Bai Yanfei|Bái Yánfēi
+      ## ?
+      bai shu|Bái Shù
+      ## Bao Rongxing (Happy, Brawler, Steamed Bun Invasion) - Bāo Róngxìng, 包荣兴
+      Bao Rongxing|Bāo Róngxìng
+      ## Bound Boat (Blue Brook Guild, Cleric, Bound Boat) - Xì Zhōu | Bound Boat, 系舟
+      xi zhou|Xì Zhōu
 
-# C
-## Chang Xian (Esports Reporter) Cháng Xiān
-Chang Xian|Cháng Xiān
-## Chen Guo (Happy (Boss), Launcher, Chasing Haze) - Chén Guǒ, 陈果
-Chen Guo|Chén Guǒ
-## Chen Yehui (Excellent Dynasty, Battle Mage) - Chén Yèhuī, 陈夜辉
-Chen Yehui|Chén Yèhuī
-## Chu Yunxiu (Misty Rain, Chinese Glory Team, Elementalist, Windy Rain) Chǔ Yúnxiù, 楚云秀
-Chu Yunxiu|Chǔ Yúnxiù
-## Cold Night (Tyrannical Ambition, Knight, Cold Night) Yè Dù Hán Tán | Cold Night, 夜度寒潭
-ye du han tan|Yè Dù Hán Tán
-## Cui Li (Excellent Era, Club Manager) Cuī Lì
-Cui Li|Cuī Lì
+      # C
+      ## Chang Xian (Esports Reporter) Cháng Xiān
+      Chang Xian|Cháng Xiān
+      ## Chen Guo (Happy (Boss), Launcher, Chasing Haze) - Chén Guǒ, 陈果
+      Chen Guo|Chén Guǒ
+      ## Chen Yehui (Excellent Dynasty, Battle Mage) - Chén Yèhuī, 陈夜辉
+      Chen Yehui|Chén Yèhuī
+      ## Chu Yunxiu (Misty Rain, Chinese Glory Team, Elementalist, Windy Rain) Chǔ Yúnxiù, 楚云秀
+      Chu Yunxiu|Chǔ Yúnxiù
+      ## Cold Night (Tyrannical Ambition, Knight, Cold Night) Yè Dù Hán Tán | Cold Night, 夜度寒潭
+      ye du han tan|Yè Dù Hán Tán
+      ## Cui Li (Excellent Era, Club Manager) Cuī Lì
+      Cui Li|Cuī Lì
 
-# D
-## Dai Yanqi (Thunderclap, Elementalist, Firebird Messenger) Dài Yánqí, 戴妍琦
-Dai Yanqi|Dài Yánqí
-## Deng Fusheng (Tiny Herb, Knight, Angelica) Dèng Fùshēng, 邓复升
-Deng Fusheng|Dèng Fùshēng
-## Du Ming (Samsara, Blade Master, Moon-Luring Frost) - Dù Míng, 杜明
-Du Ming|Dù Míng
+      # D
+      ## Dai Yanqi (Thunderclap, Elementalist, Firebird Messenger) Dài Yánqí, 戴妍琦
+      Dai Yanqi|Dài Yánqí
+      ## Deng Fusheng (Tiny Herb, Knight, Angelica) Dèng Fùshēng, 邓复升
+      Deng Fusheng|Dèng Fùshēng
+      ## Du Ming (Samsara, Blade Master, Moon-Luring Frost) - Dù Míng, 杜明
+      Du Ming|Dù Míng
 
-# F
-## Fang Minghua (Samsara, Cleric, Laughing Song) - Fāng Mínghuá
-Fang Minghua|Fāng Mínghuá
-## Fang Rui (Wind Howl, Happy, Chinese Glory Team, Brawler, Thief, Qi Master, Doubtful Demon Boundless Sea) Fāng Ruì, 方锐
-Fang Rui|Fāng Ruì
-## Fang Shijing (Blue Rain, Warlock, Swoksaar) - Fāng Shìjìng, 方世镜
-Fang Shijing|Fāng Shìjìng
-## Fang Shiqian (Tiny Herb, Cleric, Paladin, Wind Guard, Aweto) - Fāng Shìqiān, 方士谦
-Fang Shiqian|Fāng Shìqiān
-## Fang Xuecai (Thunderclap, Assassin, Demon Talent) Fāng Xuécái, 方学才
-Fang Xuecai|Fāng Xuécái
+      # F
+      ## Fang Minghua (Samsara, Cleric, Laughing Song) - Fāng Mínghuá
+      Fang Minghua|Fāng Mínghuá
+      ## Fang Rui (Wind Howl, Happy, Chinese Glory Team, Brawler, Thief, Qi Master, Doubtful Demon Boundless Sea) Fāng Ruì, 方锐
+      Fang Rui|Fāng Ruì
+      ## Fang Shijing (Blue Rain, Warlock, Swoksaar) - Fāng Shìjìng, 方世镜
+      Fang Shijing|Fāng Shìjìng
+      ## Fang Shiqian (Tiny Herb, Cleric, Paladin, Wind Guard, Aweto) - Fāng Shìqiān, 方士谦
+      Fang Shiqian|Fāng Shìqiān
+      ## Fang Xuecai (Thunderclap, Assassin, Demon Talent) Fāng Xuécái, 方学才
+      Fang Xuecai|Fāng Xuécái
 
-# G
-## Gao Yingjie (Tiny Herb, Witch, Kind Tree) - Gāo Yīngjié, 高英杰
-Gao Yingjie|Gāo Yīngjié
-yingjie|Yīngjié
-## Gu Xiye (Heavenly Swords, Grappler, Night Tade) - Gù Xīyè
-Gu Xiye|Gù Xīyè
-## Guan Rongfei (Excellent Era, Happy, (Technical Department)) Guān Róngfēi, 关榕飞
-Guan Rongfei|Guān Róngfēi
-## Guo Mingyu (Royal Style, Exorcist, Peaceful Hermit) Guō Míngyǔ
-Guo Mingyu|Guō Míngyǔ
-## Guo Shao (Miracle, Launcher, Berserker) Guō Shǎo
-Guo Shao|Guō Shǎo
+      # G
+      ## Gao Yingjie (Tiny Herb, Witch, Kind Tree) - Gāo Yīngjié, 高英杰
+      Gao Yingjie|Gāo Yīngjié
+      yingjie|Yīngjié
+      ## Gu Xiye (Heavenly Swords, Grappler, Night Tade) - Gù Xīyè
+      Gu Xiye|Gù Xīyè
+      ## Guan Rongfei (Excellent Era, Happy, (Technical Department)) Guān Róngfēi, 关榕飞
+      Guan Rongfei|Guān Róngfēi
+      ## Guo Mingyu (Royal Style, Exorcist, Peaceful Hermit) Guō Míngyǔ
+      Guo Mingyu|Guō Míngyǔ
+      ## Guo Shao (Miracle, Launcher, Berserker) Guō Shǎo
+      Guo Shao|Guō Shǎo
 
-# H
-## Han Wenqing (Tyranny, Striker, Desert Dust) - Hán Wénqīng, 韩文清
-Han Wenqing|Hán Wénqīng
-wenqing|Wénqīng
-## Huang Shaotian (Blue Rain, Chinese Glory Team, Blade Master, Troubling Rain) - Huáng Shàotiān, 黄少天
-Huang Shaotian|Huáng Shàotiān
-Shaotian|Shàotiān
+      # H
+      ## Han Wenqing (Tyranny, Striker, Desert Dust) - Hán Wénqīng, 韩文清
+      Han Wenqing|Hán Wénqīng
+      wenqing|Wénqīng
+      ## Huang Shaotian (Blue Rain, Chinese Glory Team, Blade Master, Troubling Rain) - Huáng Shàotiān, 黄少天
+      Huang Shaotian|Huáng Shàotiān
+      Shaotian|Shàotiān
 
-# J
-## Jia Shiming (Tyranny, Royal Style, Void, Striker) Jiǎ Shìmíng, 贾世明
-Jia Shiming|Jiǎ Shìmíng
-## Jiang Botao (Parade, Samsara Spellblade, Empty Waves) - Jiāng Bōtāo, 江波涛
-Jiang Botao|Jiāng Bōtāo
+      # J
+      ## Jia Shiming (Tyranny, Royal Style, Void, Striker) Jiǎ Shìmíng, 贾世明
+      Jia Shiming|Jiǎ Shìmíng
+      ## Jiang Botao (Parade, Samsara Spellblade, Empty Waves) - Jiāng Bōtāo, 江波涛
+      Jiang Botao|Jiāng Bōtāo
 
-# L
-## Liang Yichun (Blue Brook Guild, Berserker, Changing Spring) - Liáng Yìchūn, 梁易春
-Liang Yichun|Liáng Yìchūn
-## Li Hua (Misty Rain, Ninja, Dark Forest) - Lǐ Huá, 李华
-Li Hua|Lǐ Huá
-## Li Xuan (Void, Chinese Glory Team, Ghostblade, Crying Devil) - Lǐ Xuān, 李轩
-Li Xuan|Lǐ Xuān
-## Li Xun (Void, Assassin, Ghost Lantern) Lǐ Xùn, 李迅
-Li Xun|Lǐ Xùn
-## Li Yihui (Tiny Herb, Grappler, Flying Drops, Moving Mountain) Lǐ Yìhuī, 李亦辉
-Li Yihui|Lǐ Yìhuī
-## Li Yuan (Blue Rain, Summoner, Eight Notes) - Lǐ Yuǎn, 李远
-Li Yuan|Lǐ Yuǎn
-## Lin Jie (Tiny Herb, Witch, Vaccaria) Lín Jié, 林杰
-Lin Jie|Lín Jié
-## Lin Jingyan (Wind Howl, Tyranny, Brawler, Demon Subduer, Dark Thunder) - Lín Jìngyán, 林敬言
-Lin Jingyan|Lín Jìngyán
-## Liu Fei (Tiny Herb, Sharpshooter, Red Leaves) Liǔ Fēi (Quánzhí Gāoshǒu), 柳非
-Liu Fei|Liǔ Fēi
-quanzhi gaoshou|Quánzhí Gāoshǒu
-## Liu Hao (Excellent Era, Thunderclap, Wind Howl, Spellblade, Total Darkness) Liú Hào, 刘皓
-Liu Hao|Liú Hào
-## Liu Xiaobie (Tiny Herb, Blade Master, Flying Sword) - Liú Xiǎobié, 刘小别
-Liu Xiaobie|Liú Xiǎobié
-## Lou Guanning (Heavenly Sword, Berserker, Loulan Slash) Lóu Guānníng, 楼冠宁
-Lou Guanning|Lóu Guānníng
-## Lu Boyuan (Samsara, Grappler, Chaotic Cloudy Mountains) - Lǚ Bóyuǎn, (Lǚ Pōyuǎn) 吕泊远
-Lu Boyuan|Lǚ Bóyuǎn
-Lv Boyuan|Lǚ Bóyuǎn
-Lü Boyuan|Lǚ Bóyuǎn
-## Lu Hanwen (Blue Rain, Blade Master, Flowing Cloud) - Lú Hànwén, 卢瀚文
-Lu Hanwen|Lú Hànwén
-## Lu Liang/Lv Liang (Royal Style, Exorcist, Peaceful Hermit) - Lǚ Liáng
-Lu Liang|Lǚ Liáng
-Lv Liang|Lǚ Liáng
-Lü Liang|Lǚ Liáng
-## Lu Yining (Misty Rain, Thunderclap, Sharpshooter, Something to Hide) - Lǔ Yìníng
-Lu Yining|Lǔ Yìníng
-## Luo Ji (Happy, Summoner, Concealed Light) Luō Jí, 罗辑
-Luo Ji|Luō Jí
+      # L
+      ## Liang Yichun (Blue Brook Guild, Berserker, Changing Spring) - Liáng Yìchūn, 梁易春
+      Liang Yichun|Liáng Yìchūn
+      ## Li Hua (Misty Rain, Ninja, Dark Forest) - Lǐ Huá, 李华
+      Li Hua|Lǐ Huá
+      ## Li Xuan (Void, Chinese Glory Team, Ghostblade, Crying Devil) - Lǐ Xuān, 李轩
+      Li Xuan|Lǐ Xuān
+      ## Li Xun (Void, Assassin, Ghost Lantern) Lǐ Xùn, 李迅
+      Li Xun|Lǐ Xùn
+      ## Li Yihui (Tiny Herb, Grappler, Flying Drops, Moving Mountain) Lǐ Yìhuī, 李亦辉
+      Li Yihui|Lǐ Yìhuī
+      ## Li Yuan (Blue Rain, Summoner, Eight Notes) - Lǐ Yuǎn, 李远
+      Li Yuan|Lǐ Yuǎn
+      ## Lin Jie (Tiny Herb, Witch, Vaccaria) Lín Jié, 林杰
+      Lin Jie|Lín Jié
+      ## Lin Jingyan (Wind Howl, Tyranny, Brawler, Demon Subduer, Dark Thunder) - Lín Jìngyán, 林敬言
+      Lin Jingyan|Lín Jìngyán
+      ## Liu Fei (Tiny Herb, Sharpshooter, Red Leaves) Liǔ Fēi (Quánzhí Gāoshǒu), 柳非
+      Liu Fei|Liǔ Fēi
+      quanzhi gaoshou|Quánzhí Gāoshǒu
+      ## Liu Hao (Excellent Era, Thunderclap, Wind Howl, Spellblade, Total Darkness) Liú Hào, 刘皓
+      Liu Hao|Liú Hào
+      ## Liu Xiaobie (Tiny Herb, Blade Master, Flying Sword) - Liú Xiǎobié, 刘小别
+      Liu Xiaobie|Liú Xiǎobié
+      ## Lou Guanning (Heavenly Sword, Berserker, Loulan Slash) Lóu Guānníng, 楼冠宁
+      Lou Guanning|Lóu Guānníng
+      ## Lu Boyuan (Samsara, Grappler, Chaotic Cloudy Mountains) - Lǚ Bóyuǎn, (Lǚ Pōyuǎn) 吕泊远
+      Lu Boyuan|Lǚ Bóyuǎn
+      Lv Boyuan|Lǚ Bóyuǎn
+      Lü Boyuan|Lǚ Bóyuǎn
+      ## Lu Hanwen (Blue Rain, Blade Master, Flowing Cloud) - Lú Hànwén, 卢瀚文
+      Lu Hanwen|Lú Hànwén
+      ## Lu Liang/Lv Liang (Royal Style, Exorcist, Peaceful Hermit) - Lǚ Liáng
+      Lu Liang|Lǚ Liáng
+      Lv Liang|Lǚ Liáng
+      Lü Liang|Lǚ Liáng
+      ## Lu Yining (Misty Rain, Thunderclap, Sharpshooter, Something to Hide) - Lǔ Yìníng
+      Lu Yining|Lǔ Yìníng
+      ## Luo Ji (Happy, Summoner, Concealed Light) Luō Jí, 罗辑
+      Luo Ji|Luō Jí
 
-# M
-## Mo Fan (Happy, Ninja, Assassin, Deception) - Mò Fán, 莫凡
-Mo Fan|Mò Fán
+      # M
+      ## Mo Fan (Happy, Ninja, Assassin, Deception) - Mò Fán, 莫凡
+      Mo Fan|Mò Fán
 
-# P
-## Plantago Seed (Herb Garden, Witch, Plantago Seed) - Chē Qiánzǐ | Plantago Seed, 车前子
-che qianzi|Chē Qiánzǐ
+      # P
+      ## Plantago Seed (Herb Garden, Witch, Plantago Seed) - Chē Qiánzǐ | Plantago Seed, 车前子
+      che qianzi|Chē Qiánzǐ
 
-# Q
-## Qiao Yifan (Tiny Herb, Happy, Assassin, Ghostblade, One Inch Ash) - Qiáo Yīfān, 喬一帆
-Qiao Yifan|Qiáo Yīfān
-yifan|Yīfān
-## Qin Muyun (Tyranny, Sharpshooter, Negative Nine Degrees) - Qín Mùyún
-Qin Muyun|Qín Mùyún
-## Qin Tianran (Excellent Era, Elementalist, Emotionless Magic) - Qín Tiānrán, 秦天然
-Qin Tianran|Qín Tiānrán
-## Qiu Fei (Excellent Era, Battle Mage, Combat Form) - Qiū Fēi, 邱非
-Qiu Fei|Qiū Fēi
+      # Q
+      ## Qiao Yifan (Tiny Herb, Happy, Assassin, Ghostblade, One Inch Ash) - Qiáo Yīfān, 喬一帆
+      Qiao Yifan|Qiáo Yīfān
+      yifan|Yīfān
+      ## Qin Muyun (Tyranny, Sharpshooter, Negative Nine Degrees) - Qín Mùyún
+      Qin Muyun|Qín Mùyún
+      ## Qin Tianran (Excellent Era, Elementalist, Emotionless Magic) - Qín Tiānrán, 秦天然
+      Qin Tianran|Qín Tiānrán
+      ## Qiu Fei (Excellent Era, Battle Mage, Combat Form) - Qiū Fēi, 邱非
+      Qiu Fei|Qiū Fēi
 
-# R
-## Ruan Yongbin (Wind Howl, Cleric, Soul Healer) - Ruǎn Yǒngbīn
-Ruan Yongbin|Ruǎn Yǒngbīn
+      # R
+      ## Ruan Yongbin (Wind Howl, Cleric, Soul Healer) - Ruǎn Yǒngbīn
+      Ruan Yongbin|Ruǎn Yǒngbīn
 
-# S
-## Shu Kexin (Misty Rain, Sharpshooter, None Dare Attack) Shū Kěxīn, 舒可欣
-Shu Kexin|Shū Kěxīn
-## Shu Keyi (Misty Rain, Sharpshooter, Lower Your Head) Shū Kěyí, 舒可怡
-Shu Keyi|Shū Kěyí
-## Song Qiying (Tyranny, Striker, River Sunset) - Sòng Qíyīng, Sòng Jīyīng, 宋奇英
-Song Qiying|Sòng Qíyīng
-## Song Xiao (Blue Rain, Qi Master, Receding Tides) - Sòng Xiǎo, 宋晓
-Song Xiao|Sòng Xiǎo
-## Su Mucheng (Excellent Era, Happy, Chinese Glory Team, Launcher, Dancing Rain) - Sū Mùchéng, 苏沐橙
-Su Mu cheng|Sū Mùchéng
-mu cheng|Mùchéng
-## Su Muqiu (Excellent Era, Launcher, Unspecialized, Sharpshooter, Autumn Tree) - Sū Mùqiū, 蘇沐秋
-Su Mu qiu|Sū Mùqiū
-mu qiu|Mùqiū
-## Sun Xiang (Conquering Clouds, Excellent Era, Samsara, Chinese Glory Team, Berserker, Battle Mage, One Autumn Leaf) - Sūn Xiáng, 孙翔
-Sun Xiang|Sūn Xiáng
-### I'm guessing?
-little xiang|Little Xiáng
-## Sun Zheping (Hundred Blossoms, Happy, Heavenly Sword, Berserker, Blossoming Chaos, Another Summer of Sleep) - Sūn Zhépíng, 孙哲平
-Sun Zheping|Sūn Zhépíng
-zheping|Zhépíng
+      # S
+      ## Shu Kexin (Misty Rain, Sharpshooter, None Dare Attack) Shū Kěxīn, 舒可欣
+      Shu Kexin|Shū Kěxīn
+      ## Shu Keyi (Misty Rain, Sharpshooter, Lower Your Head) Shū Kěyí, 舒可怡
+      Shu Keyi|Shū Kěyí
+      ## Song Qiying (Tyranny, Striker, River Sunset) - Sòng Qíyīng, Sòng Jīyīng, 宋奇英
+      Song Qiying|Sòng Qíyīng
+      ## Song Xiao (Blue Rain, Qi Master, Receding Tides) - Sòng Xiǎo, 宋晓
+      Song Xiao|Sòng Xiǎo
+      ## Su Mucheng (Excellent Era, Happy, Chinese Glory Team, Launcher, Dancing Rain) - Sū Mùchéng, 苏沐橙
+      Su Mu cheng|Sū Mùchéng
+      mu cheng|Mùchéng
+      ## Su Muqiu (Excellent Era, Launcher, Unspecialized, Sharpshooter, Autumn Tree) - Sū Mùqiū, 蘇沐秋
+      Su Mu qiu|Sū Mùqiū
+      mu qiu|Mùqiū
+      ## Sun Xiang (Conquering Clouds, Excellent Era, Samsara, Chinese Glory Team, Berserker, Battle Mage, One Autumn Leaf) - Sūn Xiáng, 孙翔
+      Sun Xiang|Sūn Xiáng
+      ### I'm guessing?
+      little xiang|Little Xiáng
+      ## Sun Zheping (Hundred Blossoms, Happy, Heavenly Sword, Berserker, Blossoming Chaos, Another Summer of Sleep) - Sūn Zhépíng, 孙哲平
+      Sun Zheping|Sūn Zhépíng
+      zheping|Zhépíng
 
-# T
-## Tang Hao (Hundred Blossoms, Wind Howl, Chinese Glory Team, Brawler, Delilo, Demon Subduer) - Táng Hào, 唐昊
-Tang Hao|Táng Hào
-## Tang Rou (Happy, Battle Mage, Soft Mist) Táng Róu, 唐柔
-Tang Rou|Táng Róu
-## Tao Xuan (Excellent Era (Boss), Battle Mage) Táo Xuān, 陶轩
-Tao Xuan|Táo Xuān
-## Tian Sen (Royal Style, Exorcist, Peaceful Hermit) Tián Sēn, 田森
-Tian Sen|Tián Sēn
-## Tong Lin (Samsara, Research) - Tóng Lín
-Tong Lin|Tóng Lín
+      # T
+      ## Tang Hao (Hundred Blossoms, Wind Howl, Chinese Glory Team, Brawler, Delilo, Demon Subduer) - Táng Hào, 唐昊
+      Tang Hao|Táng Hào
+      ## Tang Rou (Happy, Battle Mage, Soft Mist) Táng Róu, 唐柔
+      Tang Rou|Táng Róu
+      ## Tao Xuan (Excellent Era (Boss), Battle Mage) Táo Xuān, 陶轩
+      Tao Xuan|Táo Xuān
+      ## Tian Sen (Royal Style, Exorcist, Peaceful Hermit) Tián Sēn, 田森
+      Tian Sen|Tián Sēn
+      ## Tong Lin (Samsara, Research) - Tóng Lín
+      Tong Lin|Tóng Lín
 
-# W
-## Wang Jiexi (Tiny Herb, Chinese Glory Team, Witch, Vaccaria) - Wáng Jiéxī, 王杰希
-Wang Jiexi|Wáng Jiéxī
-Jiexi|Jiéxī
-## Wei Chen (Blue Rain, Happy, Warlock, Swoksaar, Windward Formation) - Wèi Chēn, 魏琛
-Wei Chen|Wèi Chēn
-## Wen Kebei (Heavenly Swords, Battle Mage, Homeward Bound) - Wén Kèběi
-Wen Kebei|Wén Kèběi
-## Wen Li (Excellent Era) - Wén Lǐ
-Wen Li|Wén Lǐ
-## Wu Chen (Everlasting, Happy, Happy's Guild's Association President, Launcher, Dawn Rifle) - Wǔ Chén
-Wu Chen|Wǔ Chén
-## Wu Qi (Samsara, Assassin, Cruel Silence) Wú Qǐ, 吴启
-Wu Qi|Wú Qǐ
-## Wu Xuefeng (Excellent Era, Qi Master, Qi Breaker) - Wú Xuěfēng, 吴雪峰
-Wu Xuefeng|Wú Xuěfēng
-## Wu Yuce (Void, Ghostblade, Carved Ghost) - Wú Yǔcè, 吴羽策
-Wu Yuce|Wú Yǔcè
+      # W
+      ## Wang Jiexi (Tiny Herb, Chinese Glory Team, Witch, Vaccaria) - Wáng Jiéxī, 王杰希
+      Wang Jiexi|Wáng Jiéxī
+      Jiexi|Jiéxī
+      ## Wei Chen (Blue Rain, Happy, Warlock, Swoksaar, Windward Formation) - Wèi Chēn, 魏琛
+      Wei Chen|Wèi Chēn
+      ## Wen Kebei (Heavenly Swords, Battle Mage, Homeward Bound) - Wén Kèběi
+      Wen Kebei|Wén Kèběi
+      ## Wen Li (Excellent Era) - Wén Lǐ
+      Wen Li|Wén Lǐ
+      ## Wu Chen (Everlasting, Happy, Happy's Guild's Association President, Launcher, Dawn Rifle) - Wǔ Chén
+      Wu Chen|Wǔ Chén
+      ## Wu Qi (Samsara, Assassin, Cruel Silence) Wú Qǐ, 吴启
+      Wu Qi|Wú Qǐ
+      ## Wu Xuefeng (Excellent Era, Qi Master, Qi Breaker) - Wú Xuěfēng, 吴雪峰
+      Wu Xuefeng|Wú Xuěfēng
+      ## Wu Yuce (Void, Ghostblade, Carved Ghost) - Wú Yǔcè, 吴羽策
+      Wu Yuce|Wú Yǔcè
 
-# X
-## Xia Ming (Excellent Era, Sharpshooter, Heaven) - Xià Míng, 夏茗
-Xia Ming|Xià Míng
-## Xiao Shiqin (Thunderclap, Excellent Era, Chinese Glory Team, Mechanic, Life Extinguisher) - Xiāo Shíqīn, 肖时钦
-Xiao Shiqin|Xiāo Shíqīn
-## Xu Bin (301 Degrees, Tiny Herb, Knight, Angelica) - Xǔ Bīn, 许斌
-Xu Bin|Xǔ Bīn
-## Xu Boyuan (Blue Brook Guild, Blade Master, Blue River) Xǔ Bóyuǎn, Lán Hé | Blue River, 许博远
-Xu Boyuan|Xǔ Bóyuǎn
-## Xu Jingxi (Blue Rain, Paladin, Soul Speaker) Xú Jǐngxī, 徐景熙
-Xu Jingxi|Xú Jǐngxī
+      # X
+      ## Xia Ming (Excellent Era, Sharpshooter, Heaven) - Xià Míng, 夏茗
+      Xia Ming|Xià Míng
+      ## Xiao Shiqin (Thunderclap, Excellent Era, Chinese Glory Team, Mechanic, Life Extinguisher) - Xiāo Shíqīn, 肖时钦
+      Xiao Shiqin|Xiāo Shíqīn
+      ## Xu Bin (301 Degrees, Tiny Herb, Knight, Angelica) - Xǔ Bīn, 许斌
+      Xu Bin|Xǔ Bīn
+      ## Xu Boyuan (Blue Brook Guild, Blade Master, Blue River) Xǔ Bóyuǎn, Lán Hé | Blue River, 许博远
+      Xu Boyuan|Xǔ Bóyuǎn
+      ## Xu Jingxi (Blue Rain, Paladin, Soul Speaker) Xú Jǐngxī, 徐景熙
+      Xu Jingxi|Xú Jǐngxī
 
-# Y
-## Yang Cong (301 Degrees, Assassin, Scene Killer) Yáng Cōng, 杨聪
-Yang Cong|Yáng Cōng
-## Yang Haoxuan (Void, Launcher, Translucent) Yáng Hàoxuān
-Yang Haoxuan|Yáng Hàoxuān
-## Yang Li (Tyranny, Research & Development) - Yáng Lí
-Yang Li|Yáng Lí
-## Ye Qiu (Ye Xiu twin brother) - Yè Qiū, 叶秋
-Ye Qiu|Yè Qiū
-## Ye Xiu (Excellent Era, Happy, Chinese Glory Team, Battle Mage, Unspecialized, Lord Grim, One Autumn Leaf) - Yè Xiū, 叶修
-Ye Xiu|Yè Xiū
-ye family|Yè family
-## Yu Feng (Blue Rain, Hundred Blossoms, Berserker, Brilliant Edge, Blossoming Chaos) Yú Fēng, 于锋
-Yu Feng|Yú Fēng
-## Yu Nian (Samsara) - Yú Niàn
-Yu Nian|Yú Niàn
-## Yu Wenzhou (Blue Rain, Chinese Glory Team, Warlock, Swoksaar) - Yù Wénzhōu, 喻文州
-Yu Wenzhou|Yù Wénzhōu
-Wenzhou|Wénzhōu
+      # Y
+      ## Yang Cong (301 Degrees, Assassin, Scene Killer) Yáng Cōng, 杨聪
+      Yang Cong|Yáng Cōng
+      ## Yang Haoxuan (Void, Launcher, Translucent) Yáng Hàoxuān
+      Yang Haoxuan|Yáng Hàoxuān
+      ## Yang Li (Tyranny, Research & Development) - Yáng Lí
+      Yang Li|Yáng Lí
+      ## Ye Qiu (Ye Xiu twin brother) - Yè Qiū, 叶秋
+      Ye Qiu|Yè Qiū
+      ## Ye Xiu (Excellent Era, Happy, Chinese Glory Team, Battle Mage, Unspecialized, Lord Grim, One Autumn Leaf) - Yè Xiū, 叶修
+      Ye Xiu|Yè Xiū
+      ye family|Yè family
+      ## Yu Feng (Blue Rain, Hundred Blossoms, Berserker, Brilliant Edge, Blossoming Chaos) Yú Fēng, 于锋
+      Yu Feng|Yú Fēng
+      ## Yu Nian (Samsara) - Yú Niàn
+      Yu Nian|Yú Niàn
+      ## Yu Wenzhou (Blue Rain, Chinese Glory Team, Warlock, Swoksaar) - Yù Wénzhōu, 喻文州
+      Yu Wenzhou|Yù Wénzhōu
+      Wenzhou|Wénzhōu
 
-# Z
-## Zhang Jiale (Hundred Blossoms, Tyranny, Chinese Glory Team, Spitfire, Dazzling Hundred Blossoms) - Zhāng Jiālè, 张佳乐
-Zhang Jiale|Zhāng Jiālè
-jiale|Jiālè
-## Zhang Lintao (Seaside) - Zhāng Líntāo
-Zhang Lintao|Zhāng Líntāo
-## Zhang Xinjie (Tyranny, Chinese Glory Team, Cleric, Immovable Rock) - Zhāng Xīnjié, 张新杰
-Zhang Xinjie|Zhāng Xīnjié
-## Zhang Yiwei (Samsara, Mysterious Fantasy (Coach), Sharpshooter, Cloud Piercer) - Zhāng Yìwě, 张益玮
-Zhang Yiwei|Zhāng Yìwě
-## Zhao Yang (Seaside, Qi Master, Boundless Sea) Zhào Yáng, Zhōu Yáng (misstag, typo?) 赵杨
-Zhao Yang|Zhào Yáng
-zhou yang|Zhōu Yáng
-## Zheng Xuan (Blue Rain, Spitfire, Bullet Rain) - Zhèng Xuān, 郑轩
-Zheng Xuan|Zhèng Xuān
-## Zhong Yeli (Heavenly Swords, Cleric, Thousand Falling Leaves) - Zhōng Yèlí
-Zhong Yeli|Zhōng Yèlí
-## Zhou Zekai (Samsara, Chinese Glory Team, Sharpshooter, Cloud Piercer) - Zhōu Zékǎi, 周泽楷
-Zhou Zekai|Zhōu Zékǎi
-zekai|Zékǎi
-## Zou Yuan (Hundred Blossoms, Spitfire, Brilliant Blossoms) - Zōu Yuǎn, 邹远
-Zou Yuan|Zōu Yuǎn
-## Zou Yunhai (Heavenly Sword, Elementalist, Ocean Ahead) - Zōu Yúnhǎi
-Zou Yunhai|Zōu Yúnhǎi
+      # Z
+      ## Zhang Jiale (Hundred Blossoms, Tyranny, Chinese Glory Team, Spitfire, Dazzling Hundred Blossoms) - Zhāng Jiālè, 张佳乐
+      Zhang Jiale|Zhāng Jiālè
+      jiale|Jiālè
+      ## Zhang Lintao (Seaside) - Zhāng Líntāo
+      Zhang Lintao|Zhāng Líntāo
+      ## Zhang Xinjie (Tyranny, Chinese Glory Team, Cleric, Immovable Rock) - Zhāng Xīnjié, 张新杰
+      Zhang Xinjie|Zhāng Xīnjié
+      ## Zhang Yiwei (Samsara, Mysterious Fantasy (Coach), Sharpshooter, Cloud Piercer) - Zhāng Yìwě, 张益玮
+      Zhang Yiwei|Zhāng Yìwě
+      ## Zhao Yang (Seaside, Qi Master, Boundless Sea) Zhào Yáng, Zhōu Yáng (misstag, typo?) 赵杨
+      Zhao Yang|Zhào Yáng
+      zhou yang|Zhōu Yáng
+      ## Zheng Xuan (Blue Rain, Spitfire, Bullet Rain) - Zhèng Xuān, 郑轩
+      Zheng Xuan|Zhèng Xuān
+      ## Zhong Yeli (Heavenly Swords, Cleric, Thousand Falling Leaves) - Zhōng Yèlí
+      Zhong Yeli|Zhōng Yèlí
+      ## Zhou Zekai (Samsara, Chinese Glory Team, Sharpshooter, Cloud Piercer) - Zhōu Zékǎi, 周泽楷
+      Zhou Zekai|Zhōu Zékǎi
+      zekai|Zékǎi
+      ## Zou Yuan (Hundred Blossoms, Spitfire, Brilliant Blossoms) - Zōu Yuǎn, 邹远
+      Zou Yuan|Zōu Yuǎn
+      ## Zou Yunhai (Heavenly Sword, Elementalist, Ocean Ahead) - Zōu Yúnhǎi
+      Zou Yunhai|Zōu Yúnhǎi
 
-# Avatars (specifically names/titles with pinyin mentioned in that list)
-## Autumn Tree (Su Muqiu) - Qiū Mù Sū | Qiumu Su
-qiu mu su|Qiū Mù Sū
-## Blossoming Chaos (Sun Zheping, Yu Feng) - Luò Huā Láng Jí | Blossoming Chaos
-luo hua lang ji|Luò Huā Láng Jí
-## Blue River (Xu Boyuan/Blue River) Lán Hé | Blue River
-lan he|Lán Hé
-## Cloud Piercer (Zhou Zekai) - Yī Qiāng Chuān Yún | Cloud Piercer
-yi qiang chuan yun|Yī Qiāng Chuān Yún
-## Dancing Rain (Su Mucheng, Su Muqiu) - Mù Yǔ Chéng Fēng | Dancing Rain
-mu yu cheng feng|Mù Yǔ Chéng Fēng
-## Dazzling Hundred Blossoms (Zhang Jiale, Zou Yuan) - Bǎihuā Liáoluàn | Dazzling Hundred Blossoms
-baihua liaoluan|Bǎihuā Liáoluàn
-## Deception (Mo Fan) - Huǐ Rén Bú Juàn | Deception
-hui ren bu juan|Huǐ Rén Bú Juàn
-## Desert Dust (Han Wenqing) - Dà Mò Gū Yān | Desert Dust
-da mo gu yan|Dà Mò Gū Yān
-## Empty Waves (Jiang Botao - Ye Xiu) - Wú Làng | Empty Waves
-wu lang|Wú Làng
-## Immovable Rock (Zhang Xinjie) - Shí Bùzhuǎn | Immovable Rock
-shi buzhuan|Shí Bùzhuǎn
-## Lord Grim (Ye Xiu, Su Muqiu) - Jūn Mò Xiào | Lord Grim
-jun mo xiao|Jūn Mò Xiào
-## One Autumn Leaf (Ye Xiu, Sun Xiang) - Yī Yè Zhī Qiū | One Autumn Leaf
-yi ye zhi qui|Yī Yè Zhī Qiū
-## Soft Mist (Tang Rou – Ye Xiu) - Hán Yān Róu | Soft Mist
-han yan rou|Hán Yān Róu
-## Steamed Bun Invasion (Bao Rongxing) - Bāo Zi Rù Qīn | Steamed Bun Invasion
-bao zi ru qin|Bāo Zi Rù Qīn
-## Swoksaar (Yu Wenzhou, Wei Chen, Fang Shijing) - Suǒ Kèsà'ěr | Swoksaar
-suo kesa er|Suǒ Kèsà'ěr
-suo kesa'er|Suǒ Kèsà'ěr
-## Troubling Rain (Huang Shaotian) - Yè Yǔ Shēng Fán | Troubling Rain
-ye yu sheng fan|Yè Yǔ Shēng Fán
-## Vaccaria (Wang Jiexi, Lin Jie) - Wáng Bù Liú Xíng | Vaccaria
-wang bu liu xing|Wáng Bù Liú Xíng
+      # Avatars (specifically names/titles with pinyin mentioned in that list)
+      ## Autumn Tree (Su Muqiu) - Qiū Mù Sū | Qiumu Su
+      qiu mu su|Qiū Mù Sū
+      ## Blossoming Chaos (Sun Zheping, Yu Feng) - Luò Huā Láng Jí | Blossoming Chaos
+      luo hua lang ji|Luò Huā Láng Jí
+      ## Blue River (Xu Boyuan/Blue River) Lán Hé | Blue River
+      lan he|Lán Hé
+      ## Cloud Piercer (Zhou Zekai) - Yī Qiāng Chuān Yún | Cloud Piercer
+      yi qiang chuan yun|Yī Qiāng Chuān Yún
+      ## Dancing Rain (Su Mucheng, Su Muqiu) - Mù Yǔ Chéng Fēng | Dancing Rain
+      mu yu cheng feng|Mù Yǔ Chéng Fēng
+      ## Dazzling Hundred Blossoms (Zhang Jiale, Zou Yuan) - Bǎihuā Liáoluàn | Dazzling Hundred Blossoms
+      baihua liaoluan|Bǎihuā Liáoluàn
+      ## Deception (Mo Fan) - Huǐ Rén Bú Juàn | Deception
+      hui ren bu juan|Huǐ Rén Bú Juàn
+      ## Desert Dust (Han Wenqing) - Dà Mò Gū Yān | Desert Dust
+      da mo gu yan|Dà Mò Gū Yān
+      ## Empty Waves (Jiang Botao - Ye Xiu) - Wú Làng | Empty Waves
+      wu lang|Wú Làng
+      ## Immovable Rock (Zhang Xinjie) - Shí Bùzhuǎn | Immovable Rock
+      shi buzhuan|Shí Bùzhuǎn
+      ## Lord Grim (Ye Xiu, Su Muqiu) - Jūn Mò Xiào | Lord Grim
+      jun mo xiao|Jūn Mò Xiào
+      ## One Autumn Leaf (Ye Xiu, Sun Xiang) - Yī Yè Zhī Qiū | One Autumn Leaf
+      yi ye zhi qui|Yī Yè Zhī Qiū
+      ## Soft Mist (Tang Rou - Ye Xiu) - Hán Yān Róu | Soft Mist
+      han yan rou|Hán Yān Róu
+      ## Steamed Bun Invasion (Bao Rongxing) - Bāo Zi Rù Qīn | Steamed Bun Invasion
+      bao zi ru qin|Bāo Zi Rù Qīn
+      ## Swoksaar (Yu Wenzhou, Wei Chen, Fang Shijing) - Suǒ Kèsà'ěr | Swoksaar
+      suo kesa er|Suǒ Kèsà'ěr
+      suo kesa'er|Suǒ Kèsà'ěr
+      ## Troubling Rain (Huang Shaotian) - Yè Yǔ Shēng Fán | Troubling Rain
+      ye yu sheng fan|Yè Yǔ Shēng Fán
+      ## Vaccaria (Wang Jiexi, Lin Jie) - Wáng Bù Liú Xíng | Vaccaria
+      wang bu liu xing|Wáng Bù Liú Xíng
 
-# Other Tags
-## Little Dot - Xiáo Diǎn | Little Dot (Quánzhí Gāoshǒu)
-xiao dian|Xiáo Diǎns
-## Sister Yang - Sister Yáng (全职高手 | The King's Avatar)
-sister yang|Sister Yáng
-### idk lol
-yang mei|Yáng mèi
-## Blue Rain - Lán Yǔ | Team Blue Rain
-lan yu|Lán Yǔ
-## Excellent Era - Jiā Shì | Team Excellent Era
-jia shi|Jiā Shì
-## Happy - Xīng Xīn | Team Happy
-xing xin|Xīng Xīn
-## Heavenly Swords - Yì Zhǎn | Team Heavenly Swords
-yi zhan|Yì Zhǎn
-## Misty Rain - Yān Yǔ | Team Misty Rain
-yan yu|Yān Yǔ
-## Royal Style - Huáng Fēng | Team Royal Style
-huang feng|Huáng Fēng
-## Samsara - Lún Huí | Team Samsara
-lun hui|Lún Huí
-## Seaside - Lín Hǎi | Team Seaside
-lin hai|Lín Hǎi
-## Thunderclap - Léi Tíng | Team Thunderclap
-lei ting|Léi Tíng
-## Tiny Herb - Wēicǎo | Team Tiny Herb
-weicao|Wēicǎo
-## Tyranny - Bàtú | Team Tyranny
-batu|Bàtú
-  `;
+      # Other Tags
+      ## Little Dot - Xiáo Diǎn | Little Dot (Quánzhí Gāoshǒu)
+      xiao dian|Xiáo Diǎns
+      ## Sister Yang - Sister Yáng (全职高手 | The King's Avatar)
+      sister yang|Sister Yáng
+      ### idk lol
+      yang mei|Yáng mèi
+      ## Blue Rain - Lán Yǔ | Team Blue Rain
+      lan yu|Lán Yǔ
+      ## Excellent Era - Jiā Shì | Team Excellent Era
+      jia shi|Jiā Shì
+      ## Happy - Xīng Xīn | Team Happy
+      xing xin|Xīng Xīn
+      ## Heavenly Swords - Yì Zhǎn | Team Heavenly Swords
+      yi zhan|Yì Zhǎn
+      ## Misty Rain - Yān Yǔ | Team Misty Rain
+      yan yu|Yān Yǔ
+      ## Royal Style - Huáng Fēng | Team Royal Style
+      huang feng|Huáng Fēng
+      ## Samsara - Lún Huí | Team Samsara
+      lun hui|Lún Huí
+      ## Seaside - Lín Hǎi | Team Seaside
+      lin hai|Lín Hǎi
+      ## Thunderclap - Léi Tíng | Team Thunderclap
+      lei ting|Léi Tíng
+      ## Tiny Herb - Wēicǎo | Team Tiny Herb
+      weicao|Wēicǎo
+      ## Tyranny - Bàtú | Team Tyranny
+      batu|Bàtú
+      `;
+}
+
+/**
+ * Hard-coded Tiān Guān Cì Fú pinyin replacement rules.
+ */
+function tgcfReplacements() {
+  return `
+      # Tiān Guān Cì Fú
+      tian guan ci fu|Tiān Guān Cì Fú
+
+      # Items
+      ## Cursed Shackles (咒枷, Zhòu Jiā)
+      zhou jia|Zhòu Jiā
+      ## Deathly Spirit Butterflies (死灵蝶, Sǐ Líng Dié)
+      si ling die|Sǐ Líng Dié
+      ## E-Ming (厄命, È-Mìng)
+      e ming|È-Mìng
+      ## Fang Xin (芳心剑, Fāngxīn Jiàn)
+      fang xin jian|Fāngxīn Jiàn
+      fang xin|Fāngxīn
+      ## Form Revealing Water (现形水, Xiànxíng Shuǐ)
+      xian xing shui|Xiànxíng Shuǐ
+      xian xing|Xiànxíng
+      ## Ghost Scent Candy (鬼味糖, Guǐ Wèi Táng)
+      gui wei tang|Guǐ Wèi Táng
+      ## The Golden Longevity Lockets (长命金锁, Chángmìng Jīn Suǒ)
+      chang ming jin suo|Chángmìng Jīn Suǒ
+      ## Hong Jing (红镜, Hóngjìng)
+      hong jing|Hóngjìng
+      ## Incorruptible Chastity Meatballs (玉洁冰清丸, Yù Jié Bīng Qīng Wán)
+      yu jie bing qing wan|Yù Jié Bīng Qīng Wán
+      ## Love for All Seasons (百年好合羹, Bǎinián Hǎo Hé Gēng)
+      bai nian hao he gang|Bǎinián Hǎo Hé Gēng
+      ## The Rain Master Hat (雨师笠, Yǔ Shī Lì)
+      yu shi li|Yǔ Shī Lì
+      ## The red string (红线, hóngxiàn)
+      hong xian|hóngxiàn
+      ## Ruoye (若邪, Ruòyé)
+      ruo ye|Ruòyé
+      ## Shanyue Fern (善月草, Shànyuè Cǎo)
+      shan yue cao|Shànyuè Cǎo
+      shan yue|Shànyuè
+      ## Toppled Phoenixes (颠鸾倒凤 Diān Luán Dào Fèng)
+      dian luan dao feng|Diān Luán Dào Fèng
+      ## The Water Master Fan (水师扇, Shuǐ Shī Shàn)
+      shui shi shan|Shuǐ Shī Shàn
+      ## The Wind Master Fan (风师扇, Fēng Shī Shàn)
+      feng shi shan|Fēng Shī Shàn
+      ## Yan Zhen (豔貞, Yàn Zhēn)
+      yan zhen|Yàn Zhēn
+      ## Yulong (雨龙, Yǔlóng)
+      yu long|Yǔlóng
+
+      # canonical chars on ao3, supplemented with alternate titles from the wiki
+      butcher zhu|Butcher Zhū
+      ## Banyue (半月, Bànyuè) (place)
+      banyue|Bànyuè
+      ## Ban Yue (person)
+      ban yue|Bàn Yuè
+      bai jin|Bái Jǐn
+      bai wu xiang|Bái Wúxiàng
+      cuo cuo|Cuòcuò
+      cang qiong|Cāng Qióng
+      fu yao|Fú Yáo
+
+      # 风信 - Fēng Xìn
+      feng xin|Fēng Xìn
+      ## 南阳将军, Nán Yáng jiāngjūn - General Nan Yang (南 nán - southern, 阳 yáng - sun)
+      ## Nan Yang Zhen Jun ?
+      nan yang jiang jun|Nán Yáng jiāngjūn
+      nan yang|Nán Yáng
+      ## 巨阳将军, Jù Yáng jiāngjūn - General Ju Yang
+      ju yang jiang jun|Jù Yáng jiāngjūn
+      ju yang|Jù Yáng
+      ## weapon: 风神弓, Fēngshén Gōng (lit. Wind God Bow)
+      feng shen gong|Fēngshén Gōng
+
+      gu zi|Gǔzi
+
+      # 花城 - Huā Chéng
+      ## 花城主, Huā Chéngzhǔ - City Master
+      hua cheng zhu|Huā Chéngzhǔ
+      hua cheng|Huā Chéng
+      ## 红儿, Hónghóng-er - Red
+      hong hong er|Hónghóng'ér
+      hong hong'er|Hónghóng'ér
+      hong er|Hóng'ér
+      hong'er|Hóng'ér
+      ## 血雨探花, Xuè Yǔ Tàn Huā - Crimson Rain Sought Flower
+      xue yu tan hua|Xuè Yǔ Tàn Huā
+      ## 三郎, Sān Láng - Third Son
+      san lang|Sān Láng
+      ## 无名, Wú Míng - Nameless
+      wu ming|Wú Míng
+      ## 小花, Xiǎo Huā - Little Flower (Puqi Villagers)
+      xiao hua|xiăo-Huā
+
+      # 贺玄 - Hè Xuán
+      he xuan|Hè Xuán
+      # 黑水沉舟, Hēi Shuǐ Chén Zhōu - Black Water Submerging Boats
+      Hei Shui Chen Zhou|Hēi Shuǐ Chén Zhōu
+      ## The Black Water Demon Lair (黑水鬼域, Hēi Shuǐ Guǐ Yù)
+      hei shui gui yu|Hēi Shuǐ Guǐ Yù
+      # 黑水, Hēi Shuǐ - Black Water
+      hei shui|Hēi Shuǐ
+
+      jian lan|Jiàn Lán
+      jian yu|Jiàn Yù
+      jing wen|Jìng Wén
+
+      # 君吾, Jūn Wú - The Lord, I Am
+      ## 神武大帝, Shénwǔ Dàdì - Heavenly Martial Emperor
+      jun wu|Jūn Wú
+      shen wu da di|Shénwǔ Dàdì
+
+      ke mo|Kè Mó
+      ming yi|Míng Yí
+      lang qian qiu|Láng Qiānqiū
+      lang ying|Láng Yíng
+      ling wen|Líng Wén
+      moxiang tongxiu|Mòxiāng Tóngxiù
+      mei nianqing|Méi Niànqīng
+
+      # 慕情 - Mù Qíng
+      mu qing|Mù Qíng
+      ## 玄真将军, Xuán Zhēn Jiāngjūn - General Xuan Zhen
+      ## 玄真 xuán zhēn - enigmatic truth
+      xuan zhen jiang jun|Xuán Zhēn jiāngjūn
+      xuan zhen|Xuán Zhēn
+      # weapon: 斩马刀, Zhǎn Mǎdāo - lit. Chopping Sabre
+      zhan ma dao|Zhǎn Mǎdāo
+
+      nan feng|Nán Fēng
+
+      # 裴茗 - Péi Míng
+      pei ming|Péi Míng
+      ## 明光将军, Míng Guāng Jiāngjūn - General Ming Guang
+      ming guang jiang jun|Míng Guāng jiāngjūn
+      ## 将军折剑, Jiāngjūn Zhē Jiàn - The General Who Broke His Sword
+      jiang jun zhe jian|Jiāngjūn Zhē Jiàn
+      ## Ming Guang (明光, Míng Guāng) (former sword)
+      ming guang|Míng Guāng
+      ## 裴将军, Péi Jiāngjūn - General Pei
+      pei jiang jun|Péi jiāngjūn
+      ## 裴兄, Péi-xiōng - Brother Pei (to Shi Wudu)
+      pei xiong|Péi xiōng
+      ## 老裴, Lǎo Péi - Old Pei (to Ling Wen)
+      lao pei|lǎo Péi
+
+      pei su|Péi Sù
+      quan yizhen|Quán Yīzhēn
+
+      # 戚容, Qī Róng
+      ## 青灯夜游, Qīng Dēng Yè Yóu - Night-Touring Green Lantern
+      ## 青鬼戚容, Qīng Guǐ Qī Róng - Green Ghost Qi Rong
+      ## 小镜, Xiǎo Jìng - Small Mirror (former)
+      ## Rong-er (to the Queen)
+      qi rong|Qī Róng
+      qing gui|Qīng Guǐ
+      xiao jing|Xiǎo Jìng
+      rong er|Róng'ér
+      rong'er|Róng'ér
+
+      rong guang|Róng Guǎng
+
+      # 师青玄 - Shī Qīngxuán
+      ## 风师青玄, Fēng Shī Qīng Xuán - Lord Wind Master Qingxuan
+      feng shi qing xuan|Fēng Shī Qīngxuán
+      ## 风师娘娘, Fēng Shī Niáng Niang - Lady Wind Master
+      feng shi niang niang|Fēng Shī niángniang
+      feng shi|Fēng Shī
+      shi qingxuan|Shī Qīngxuán
+      qing xuan|Qīngxuán
+      ## 少君倾酒, Shào Jūn Qīng Jiǔ - The Young Lord Who Pours Wine
+      shao jun qing jiu|Shàojūn Qīng Jiǔ
+
+      # 师无渡 - Shī Wúdù
+      ## 水师无渡, Shuǐ Shī Wúdù - Water Master Wudu
+      shui shi wu du|Shuǐ Shī Wúdù
+      shi wu du|Shī Wúdù
+      wu du|Wúdù
+      ## 水横天, Shuǐ Héngtiān - Water Tyrant
+      shui heng tian|Shuǐ Héngtiān
+      heng tian|Héngtiān
+      ## 哥, Gē - Older Brother (to Shi Qingxuan)
+      ## 水师兄, Shuǐ Shī-xiōng - Brother Water Master (to Pei Ming)
+      shui shi xiong|Shuǐ Shī xiōng
+
+      tian sheng|Tiān Shēng
+
+      # 谢怜 - Xiè Lián
+      xie lian|Xiè Lián
+      ## 太子殿下, Tài Zǐ Diànxià - His Royal Highness the Crown Prince
+      tai zi dian xia|Tàizǐ Diànxià
+      ## 花冠武神, Huā Guān Wǔ Shén - Flower Crown Martial God
+      hua guan wu shen|Huā Guān Wǔ Shén
+      ## 太子悦神, Tài Zǐ Yuè Shén - His Highness Who Pleased the Gods
+      tai zi yue shen|Tàizǐ Yuè Shén
+      ## 花将军, Huā Jiāng Jūn - General Huā
+      hua jiang jun|Huā jiāngjūn
+      ## 花谢 - Huā Xiè
+      hua xie|Huā Xiè
+      ## 哥哥, Gēge - Older Brother (Hua Cheng)
+      ## 太子表哥, Tàizǐ Biǎo Gē - Cousin Crown Prince (to Qi Rong)
+      tai zi biao ge|Tàizǐ biǎogē
+
+      xiao ying|Xiǎo Yíng
+      xuan ji|Xuān Jī
+
+      # 引玉 - Yǐn Yù
+      ## 下弦月使, Xiàxián Yuè Shǐ - Waning Moon Officer
+      ## 师兄, Shīxiōng - Older disciple brother (to Quan Yizhen)
+      yin yu|Yǐn Yù
+      xia xian yue shi|Xiàxián Yuè Shǐ
+
+      yushi huang|Yǔshī Huáng
+      an le|Ān Lè
+
+      # Places (from wiki)
+      ## Banming (半命, Bànmìng; lit. Half-life)
+      ban ming|Bànmìng
+      ## The Cave of Ten Thousand Gods (万神窟, Wàn Shén Kū)
+      wan shen ku|Wàn Shén Kū
+      ## The Gambler's Den (间赌坊, Jiān Dǔ Fāng)
+      jian du fang|Jiān Dǔ Fāng
+      ## The Ghost City (鬼市, Guǐ Shì)
+      gui shi|Guǐ Shì
+      ## The Heavenly Capital (仙京, Xiān Jīng)
+      xian jing|Xiān Jīng
+      ## Paradise Manor (极乐坊, Jílè Fāng)
+      ji le fang|Jílè Fāng
+      ji le|Jílè
+      ## Qiandeng Temple (千灯庙, Qiāndēng Miào)
+      qian deng miao|Qiāndēng Miào
+      qian deng|Qiāndēng
+      ## Taicang Mountain (太苍山, Tàicāng Shān)
+      tai cang shan|Tàicāng Shān
+      ## Tonglu Mountain (铜炉山, Tónglú Shān)
+      tong lu shan|Tónglú Shān
+      tong lu|Tónglú
+      ## Wuyong (乌庸, Wūyōng)
+      wu yong|Wūyōng
+      ## Xianle (仙乐, Xiānlè)
+      xian le|Xiānlè
+      ## Xuli Kingdom (须黎, Xūlí)
+      xu li|Xūlí
+      ## Yong'an (永安, Yǒng'ān)
+      yong an|Yǒng'ān
+      yong'an|Yǒng'ān
+      ## Yu Jun Mountain (与君山, Yǔ Jūn Shān)
+      yu jun shan|Yǔ Jūn Shān
+      yu jun|Yǔ Jūn
+      ## Yushi (雨师, Yǔshī)
+      yu shi|Yǔshī
+
+      # Misc
+      ## Ascension (飞升, Fēishēng)
+      fei sheng|Fēishēng
+      ## Cultivation (修炼 xiūliàn, 修真 xiūzhēn, 修行 xiūxíng or 修仙 xiūxiān)
+      xiu lian|xiūliàn
+      xiu zhen|xiūzhēn
+      xiu xing|xiūxíng
+      xiu xian|xiūxiān
+      ## The Four Famous Tales (四名景, Sì Míng Jǐng)
+      si ming jing|Sì Míng Jǐng
+      ## The Four Great Calamities (四大害, Sì Dà Hài)
+      si da hai|Sì Dà Hài
+      ## Ghosts (鬼, Guǐ)
+      gui|Guǐ
+      ## Gods/Heavenly Officials (神官, Shénguān)
+      shen guan|Shénguān
+      ## The Jade Emperor (yùdì)
+      yu di|yùdì
+      ## The Three Tumors (三毒瘤, Sān Dúliú)
+      san du liu|Sān Dúliú
+
+      ## various titles
+      shi xiong|shīxiōng
+      ge ge|gēge
+      biao ge|biǎogē
+      ge|gē
+      shao jun|shàojūn
+      jiang jun|jiāngjūn
+      `;
 }
 })();
