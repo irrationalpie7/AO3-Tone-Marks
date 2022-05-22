@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Tone Marks II
 // @namespace    http://tampermonkey.net/
-// @version      2.0.5
+// @version      2.0.6
 // @description  Add tone marks on Ao3 works
 // @author       irrationalpie7
 // @match        https://archiveofourown.org/*
@@ -1832,7 +1832,7 @@ function tgcfReplacements() {
       ## 风师娘娘, Fēng Shī Niáng Niang - Lady Wind Master
       feng shi niang niang|Fēng Shī niángniang
       feng shi|Fēng Shī
-      shi qingxuan|Shī Qīngxuán
+      shi qing xuan|Shī Qīngxuán
       qing xuan|Qīngxuán
       ## 少君倾酒, Shào Jūn Qīng Jiǔ - The Young Lord Who Pours Wine
       shao jun qing jiu|Shàojūn Qīng Jiǔ
