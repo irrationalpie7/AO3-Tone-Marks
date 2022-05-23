@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Tone Marks II
 // @namespace    http://tampermonkey.net/
-// @version      2.1.0
+// @version      3.0
 // @description  Add tone marks on Ao3 works
 // @author       irrationalpie7
 // @match        https://archiveofourown.org/*
@@ -10,13 +10,13 @@
 // @downloadURL  https://github.com/irrationalpie7/AO3-Tone-Marks/raw/main/Tone%20Marks%20II.pub.user.js
 //
 // Generic and per-fandom replacement rules:
-// @resource     generic https://github.com/irrationalpie7/AO3-Tone-Marks/raw/experimental-imports/generic.txt
-// @resource     guardian https://github.com/irrationalpie7/AO3-Tone-Marks/raw/experimental-imports/guardian.txt
-// @resource     kings_avatar https://github.com/irrationalpie7/AO3-Tone-Marks/raw/experimental-imports/kings_avatar.txt
-// @resource     mdzs https://github.com/irrationalpie7/AO3-Tone-Marks/raw/experimental-imports/mdzs.txt
-// @resource     nirvana_in_fire https://github.com/irrationalpie7/AO3-Tone-Marks/raw/experimental-imports/nirvana_in_fire.txt
-// @resource     tgcf https://github.com/irrationalpie7/AO3-Tone-Marks/raw/experimental-imports/tgcf.txt
-// @resource     word_of_honor https://github.com/irrationalpie7/AO3-Tone-Marks/raw/experimental-imports/word_of_honor.txt
+// @resource     generic https://github.com/irrationalpie7/AO3-Tone-Marks/raw/main/generic.txt
+// @resource     guardian https://github.com/irrationalpie7/AO3-Tone-Marks/raw/main/guardian.txt
+// @resource     kings_avatar https://github.com/irrationalpie7/AO3-Tone-Marks/raw/main/kings_avatar.txt
+// @resource     mdzs https://github.com/irrationalpie7/AO3-Tone-Marks/raw/main/mdzs.txt
+// @resource     nirvana_in_fire https://github.com/irrationalpie7/AO3-Tone-Marks/raw/main/nirvana_in_fire.txt
+// @resource     tgcf https://github.com/irrationalpie7/AO3-Tone-Marks/raw/main/tgcf.txt
+// @resource     word_of_honor https://github.com/irrationalpie7/AO3-Tone-Marks/raw/main/word_of_honor.txt
 // clang-format on
 // @grant unsafeWindow
 // @grant GM.getResourceText
