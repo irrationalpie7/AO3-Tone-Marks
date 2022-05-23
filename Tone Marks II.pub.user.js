@@ -17,7 +17,7 @@
 (function() {
 'use strict';
 
-function doTheThing() {
+async function doTheThing() {
   // Url of the ao3 page.
   const url = unsafeWindow.location.href;
   // Document structure of the ao3 page.
@@ -162,11 +162,13 @@ function doReplacements(element) {
     replaceAll(wordOfHonorReplacements(), simplifiedElement);
   }
   if (hasFandom('Untamed|Módào', workFandoms)) {
+    const text1 = await GM.getResourceText('mdzs')
     console.log('mdzs')
-    console.log(GM.getResourceText('mdzs'))
+    console.log(text1)
     console.log('mdzs.txt')
-    console.log(GM.getResourceText('mdzs.txt'))
-    replaceAll(GM.getResourceText('mdzs'), simplifiedElement);
+    const text2 = await GM.getResourceText('mdzs.txt')
+    console.log(text2)
+    replaceAll(text1, simplifiedElement);
   }
   if (hasFandom('Guardian', workFandoms)) {
     replaceAll(guardianReplacements(), simplifiedElement);
