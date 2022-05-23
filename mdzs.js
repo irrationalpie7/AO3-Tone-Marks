@@ -1,4 +1,9 @@
-export const mdzs = {
+
+export const mdzsRules = {
+  bogus: function() {
+    console.log('I think I actually loaded *something*');
+    return 'hi';
+  }(),
   fandomRegex: 'Untamed|Módào',
   replacementString: `
     # Yunmeng Jiang Sect and related stuff

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Tone Marks II
 // @namespace    http://tampermonkey.net/
-// @version      2.0.7
+// @version      2.0.8
 // @description  Add tone marks on Ao3 works
 // @author       irrationalpie7
 // @match        https://archiveofourown.org/*
@@ -13,7 +13,7 @@
 // @grant        none
 // ==/UserScript==
 
-const {mdzs} = mdzs;
+const {mdzsRules} = mdzs;
 
 (function() {
 'use strict';
@@ -156,8 +156,8 @@ function doReplacements(element) {
   if (hasFandom('Word of Honor|Faraway Wanderers|Qi Ye', workFandoms)) {
     replaceAll(wordOfHonorReplacements(), simplifiedElement);
   }
-  if (hasFandom(mdzs.fandomRegex, workFandoms)) {
-    replaceAll(mdzs.replacementString, simplifiedElement);
+  if (hasFandom(mdzsRules.fandomRegex, workFandoms)) {
+    replaceAll(mdzsRules.replacementString, simplifiedElement);
   }
   if (hasFandom('Guardian', workFandoms)) {
     replaceAll(guardianReplacements(), simplifiedElement);
