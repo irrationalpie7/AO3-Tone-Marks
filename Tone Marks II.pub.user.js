@@ -162,6 +162,10 @@ function doReplacements(element) {
     replaceAll(wordOfHonorReplacements(), simplifiedElement);
   }
   if (hasFandom('Untamed|Módào', workFandoms)) {
+    console.log('mdzs')
+    console.log(GM.getResourceText('mdzs'))
+    console.log('mdzs.txt')
+    console.log(GM.getResourceText('mdzs.txt'))
     replaceAll(GM.getResourceText('mdzs'), simplifiedElement);
   }
   if (hasFandom('Guardian', workFandoms)) {
