@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Tone Marks II
 // @namespace    http://tampermonkey.net/
-// @version      2.0.6
+// @version      2.0.7
 // @description  Add tone marks on Ao3 works
 // @author       irrationalpie7
 // @match        https://archiveofourown.org/*
@@ -12,6 +12,8 @@
 // clang-format on
 // @grant        none
 // ==/UserScript==
+
+import {mdzs} from 'https://github.com/irrationalpie7/AO3-Tone-Marks/experimental-imports/main/mdzs.js';
 
 (function() {
 'use strict';

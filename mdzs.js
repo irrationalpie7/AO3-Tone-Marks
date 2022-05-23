@@ -1,4 +1,4 @@
-const mdzs = {
+export const mdzs = {
   fandomRegex: 'Untamed|Módào',
   replacementString: `
     # Yunmeng Jiang Sect and related stuff
