@@ -8,28 +8,31 @@
 // clang-format off
 // @updateURL    https://github.com/irrationalpie7/AO3-Tone-Marks/raw/main/Tone%20Marks%20II.pub.user.js
 // @downloadURL  https://github.com/irrationalpie7/AO3-Tone-Marks/raw/main/Tone%20Marks%20II.pub.user.js
-// @require      https://github.com/irrationalpie7/AO3-Tone-Marks/raw/experimental-imports/mdzs.js
+// @resource     mdzs https://github.com/irrationalpie7/AO3-Tone-Marks/raw/experimental-imports/mdzs.txt
 // clang-format on
-// @grant        none
+// @grant unsafeWindow
+// @grant GM.getResourceText
 // ==/UserScript==
-
-const {mdzsRules} = mdzs;
 
 (function() {
 'use strict';
 
 function doTheThing() {
+  // Url of the ao3 page.
+  const url = unsafeWindow.location.href;
+  // Document structure of the ao3 page.
+  const document = unsafeWindow.document;
+
   // Check whether this page is an ao3 work.
   const works_regex = /https:\/\/archiveofourown\.org(\/.*)?\/works\/[0-9]+.*/;
   // Check whether it's an editing page.
   const edit_page_regex = /\/works\/[0-9]+\/edit/;
 
-  if (window.location.href.match(works_regex) !== null) {
-    if (window.location.href.match(edit_page_regex) === null &&
-        !window.location.href.includes('works/new')) {
+  if (url.match(works_regex) !== null) {
+    if (url.match(edit_page_regex) === null && !url.includes('works/new')) {
       console.log('On a works page, potentially making pinyin replacements...')
-      // Don't make replacements on the new work/edit work (tag) page, that
-      // sounds confusing.
+      // Don't make replacements on the new work/edit work (tag) page,
+      // that sounds confusing.
       doReplacements(document.getElementById('main'));
     }
   } else {
@@ -69,8 +72,9 @@ function escaped(unsafe) {
  * dash (-) or space ( ) between each word. The beginning and end of the
  * matching sequence must be at a word boundary.
  *
- * The regex will also match an incomplete html tag preceding the match, which
- * you can check for to avoid replacing within an html tag's attributes.
+ * The regex will also match an incomplete html tag preceding the match,
+ * which you can check for to avoid replacing within an html tag's
+ * attributes.
  *
  * @param {string[]} words
  * @return {RegExp}
@@ -90,8 +94,8 @@ function wordsMatchRegex(words) {
 /**
  * Wraps the replacement text in a span and returns the span as a string.
  *
- * The span will have class 'replacement' and attributes 'data-orig' with the
- * original match and 'data-new' with the replacement text.
+ * The span will have class 'replacement' and attributes 'data-orig' with
+ * the original match and 'data-new' with the replacement text.
  * @param {string} replacement The new text
  * @param {string} match The original text which is being replaced
  * @return {string}
@@ -102,8 +106,8 @@ function replacementHtml(replacement, match) {
 }
 
 /**
- * Replaces all occurrences that match 'from' in main's innerHTML with a span
- * whose text is 'to'.
+ * Replaces all occurrences that match 'from' in main's innerHTML with a
+ * span whose text is 'to'.
  *
  * @param {{innerHTML: string}} main
  * @param {RegExp} from
@@ -112,8 +116,8 @@ function replacementHtml(replacement, match) {
 function replaceTextOnPage(main, from, to) {
   main.innerHTML = main.innerHTML.replace(from, (match) => {
     if (match.startsWith('<')) {
-      // Skip matches occurring inside incomplete html tags. This avoids e.g.
-      // replacing within the href for a work tag.
+      // Skip matches occurring inside incomplete html tags. This avoids
+      // e.g. replacing within the href for a work tag.
       return match;
     }
     return replacementHtml(to, match);
@@ -121,8 +125,8 @@ function replaceTextOnPage(main, from, to) {
 }
 
 /**
- * Checks whether 'fandom' (ignoring case) is a substring of any of the fandom
- * tags.
+ * Checks whether 'fandom' (ignoring case) is a substring of any of the
+ * fandom tags.
  *
  * @param {string} fandom
  * @param {Element[]} fandomTags
@@ -139,14 +143,15 @@ function hasFandom(fandom, fandomTags) {
 }
 
 /**
- * Replaces pinyin for all text in element, using the fandoms in the element's
- * work tags to decide which rules to use.
+ * Replaces pinyin for all text in element, using the fandoms in the
+ * element's work tags to decide which rules to use.
  *
  * @param {HTMLElement} element
  */
 function doReplacements(element) {
-  // Having a simplified element to pass to 'replaceAll' allows us to avoid
-  // re-rendering the element every time its inner html gets updated.
+  // Having a simplified element to pass to 'replaceAll' allows us to
+  // avoid re-rendering the element every time its inner html gets
+  // updated.
   const simplifiedElement = {innerHTML: element.innerHTML};
 
   // Anything with a 'tag' class that's a descendant of something with a
@@ -157,7 +162,7 @@ function doReplacements(element) {
     replaceAll(wordOfHonorReplacements(), simplifiedElement);
   }
   if (hasFandom(mdzsRules.fandomRegex, workFandoms)) {
-    replaceAll(mdzsRules.replacementString, simplifiedElement);
+    replaceAll(GM.getResourceText('mdzs'), simplifiedElement);
   }
   if (hasFandom('Guardian', workFandoms)) {
     replaceAll(guardianReplacements(), simplifiedElement);
@@ -211,8 +216,8 @@ function splitReplacements(replacements) {
 }
 
 /**
- * Replaces all matches in element.innerHTML with their replacements, as encoded
- * in the rules string.
+ * Replaces all matches in element.innerHTML with their replacements, as
+ * encoded in the rules string.
  *
  * @param {string} allReplacementsString
  * @param {{innerHTML: string}} element
@@ -230,24 +235,29 @@ function replaceAll(allReplacementsString, element) {
 
 // About the <fandom>Replacements functions:
 //
-// For each line 'some text here|fancy replacement', replaces all instances of
-// 'some text here' in the doc with 'fancy replacement'.
+// For each line 'some text here|fancy replacement', replaces all
+// instances of 'some text here' in the doc with 'fancy replacement'.
 // Notes:
 //  * capitalization on the left side is ignored
-//  * any spaces on the left side that are between words will matching things
+//  * any spaces on the left side that are between words will matching
+//  things
 //      with
-//      (a) no space there (b) a dash there or (c) a space there. Examples:
+//      (a) no space there (b) a dash there or (c) a space there.
+//      Examples:
 //      - 'hanguang jun|Hánguāng-jūn' means any of 'hanguang jun',
 //        'hanguangjun', or 'hanguang-jun' will be replaced with
 //        'Hánguāng-jūn'
 //      - 'wen ke xing|Wēn Kèxíng' means that all of 'Wen KeXing', 'Wen Ke
 //        Xing', and 'wen kexing' will be replaced with 'Wēn Kèxíng'
-//  * any spaces on the left or right that are before all words or after all
+//  * any spaces on the left or right that are before all words or after
+//  all
 //      words will be ignored
-//  * partial-word matches will be ignored (e.g., if 'lan' is part of 'plan'
-//      or 'land' it will not be replaced; if 'lan sect' is part of 'plan sect'
-//      it will not be replaced)
-//  * lines with only spaces on them, or that start with #, will be ignored.
+//  * partial-word matches will be ignored (e.g., if 'lan' is part of
+//  'plan'
+//      or 'land' it will not be replaced; if 'lan sect' is part of 'plan
+//      sect' it will not be replaced)
+//  * lines with only spaces on them, or that start with #, will be
+//  ignored.
 
 /**
  * Hard-coded generic pinyin replacement rules.
