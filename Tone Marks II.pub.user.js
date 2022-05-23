@@ -13,7 +13,7 @@
 // @grant        none
 // ==/UserScript==
 
-import {mdzs} from 'https://github.com/irrationalpie7/AO3-Tone-Marks/experimental-imports/main/mdzs.js';
+const {mdzs} = mdzs;
 
 (function() {
 'use strict';
