@@ -19,7 +19,7 @@
 // @resource     word_of_honor https://github.com/irrationalpie7/AO3-Tone-Marks/raw/main/word_of_honor.txt
 // clang-format on
 // @grant unsafeWindow
-// @grant GM.getResourceText
+// @grant GM.getResourceUrl
 // ==/UserScript==
 
 (function() {
@@ -167,25 +167,25 @@ async function doReplacements(element) {
   const workFandoms =
       Array.from(element.querySelectorAll('.fandoms .tag,.fandom .tag'));
   if (hasFandom('Word of Honor|Faraway Wanderers|Qi Ye', workFandoms)) {
-    replaceAll(await GM.getResourceText('word_of_honor'), simplifiedElement);
+    replaceAll(await getReplacements('word_of_honor'), simplifiedElement);
   }
   if (hasFandom('Untamed|Módào', workFandoms)) {
-    replaceAll(await GM.getResourceText('mdzs'), simplifiedElement);
+    replaceAll(await getReplacements('mdzs'), simplifiedElement);
   }
   if (hasFandom('Guardian', workFandoms)) {
-    replaceAll(await GM.getResourceText('guardian'), simplifiedElement);
+    replaceAll(await getReplacements('guardian'), simplifiedElement);
   }
   if (hasFandom('Nirvana in Fire', workFandoms)) {
-    replaceAll(await GM.getResourceText('nirvana_in_fire'), simplifiedElement);
+    replaceAll(await getReplacements('nirvana_in_fire'), simplifiedElement);
   }
   if (hasFandom('King\'s Avatar|Quánzhí Gāoshǒu', workFandoms)) {
-    replaceAll(await GM.getResourceText('kings_avatar'), simplifiedElement);
+    replaceAll(await getReplacements('kings_avatar'), simplifiedElement);
   }
   if (hasFandom(
           'TGCF|Tiān Guān Cì Fú|Heaven Official\'s Blessing', workFandoms)) {
-    replaceAll(await GM.getResourceText('tgcf'), simplifiedElement);
+    replaceAll(await getReplacements('tgcf'), simplifiedElement);
   }
-  replaceAll(await GM.getResourceText('generic'), simplifiedElement);
+  replaceAll(await getReplacements('generic'), simplifiedElement);
 
   // Return now if it turns out we didn't make any changes.
   if (simplifiedElement.innerHTML === element.innerHTML) {
@@ -195,6 +195,20 @@ async function doReplacements(element) {
 
   // Actually replace element's innerHTML.
   element.innerHTML = simplifiedElement.innerHTML;
+}
+
+/**
+ * Gets the replacement string for this fandom from its <fandom>.txt file.
+ * @param {string} fandom
+ */
+async function getReplacements(fandom) {
+  return GM.getResourceUrl(fandom)
+      .then(url => fetch(url))
+      .then(resp => resp.text())
+      .catch(function(error) {
+        console.log('Request failed', error);
+        return null;
+      });
 }
 
 /**
