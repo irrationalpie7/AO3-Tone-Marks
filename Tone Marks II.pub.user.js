@@ -161,7 +161,7 @@ function doReplacements(element) {
   if (hasFandom('Word of Honor|Faraway Wanderers|Qi Ye', workFandoms)) {
     replaceAll(wordOfHonorReplacements(), simplifiedElement);
   }
-  if (hasFandom(mdzsRules.fandomRegex, workFandoms)) {
+  if (hasFandom('Untamed|Módào', workFandoms)) {
     replaceAll(GM.getResourceText('mdzs'), simplifiedElement);
   }
   if (hasFandom('Guardian', workFandoms)) {
