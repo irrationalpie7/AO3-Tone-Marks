@@ -1,4 +1,3 @@
-(function() {
 const mdzs = {
   fandomRegex: 'Untamed|Módào',
   replacementString: `
@@ -283,5 +282,4 @@ const mdzs = {
     # attempt to match lan|Lán at the end, after conflict with Song Lan doesn't matter
     lan|Lán
     `
-}
-})();
+};
