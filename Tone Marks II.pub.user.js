@@ -8,7 +8,7 @@
 // clang-format off
 // @updateURL    https://github.com/irrationalpie7/AO3-Tone-Marks/raw/main/Tone%20Marks%20II.pub.user.js
 // @downloadURL  https://github.com/irrationalpie7/AO3-Tone-Marks/raw/main/Tone%20Marks%20II.pub.user.js
-// @require      https://github.com/irrationalpie7/AO3-Tone-Marks/experimental-imports/main/mdzs.js
+// @require      https://github.com/irrationalpie7/AO3-Tone-Marks/raw/experimental-imports/mdzs.js
 // clang-format on
 // @grant        none
 // ==/UserScript==
