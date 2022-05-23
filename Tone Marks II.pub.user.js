@@ -31,9 +31,9 @@ async function doTheThing() {
   if (url.match(works_regex) !== null) {
     if (url.match(edit_page_regex) === null && !url.includes('works/new')) {
       console.log('On a works page, potentially making pinyin replacements...')
-      // Don't make replacements on the new work/edit work (tag) page,
-      // that sounds confusing.
-      doReplacements(document.getElementById('main'));
+          // Don't make replacements on the new work/edit work (tag) page,
+          // that sounds confusing.
+          await doReplacements(document.getElementById('main'));
     }
   } else {
     console.log(
@@ -41,7 +41,7 @@ async function doTheThing() {
     // Get all the work/series blurbs
     const blurbs = Array.from(document.querySelectorAll('.blurb'));
     for (let i = 0; i < blurbs.length; i++) {
-      doReplacements(blurbs[i]);
+      await doReplacements(blurbs[i]);
     }
   }
 
@@ -148,7 +148,7 @@ function hasFandom(fandom, fandomTags) {
  *
  * @param {HTMLElement} element
  */
-function doReplacements(element) {
+async function doReplacements(element) {
   // Having a simplified element to pass to 'replaceAll' allows us to
   // avoid re-rendering the element every time its inner html gets
   // updated.
