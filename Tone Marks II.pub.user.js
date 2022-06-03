@@ -1,11 +1,10 @@
 // ==UserScript==
 // @name         Tone Marks II
 // @namespace    http://tampermonkey.net/
-// @version      3.0.2
+// @version      3.0.3
 // @description  Add tone marks on Ao3 works
 // @author       irrationalpie7
 // @match        https://archiveofourown.org/*
-// @require      http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js
 // clang-format off
 // @updateURL    https://github.com/irrationalpie7/AO3-Tone-Marks/raw/main/Tone%20Marks%20II.pub.user.js
 // @downloadURL  https://github.com/irrationalpie7/AO3-Tone-Marks/raw/main/Tone%20Marks%20II.pub.user.js
@@ -26,7 +25,6 @@
   'use strict';
 
   async function doTheThing() {
-    console.log('Inner-level thingy')
     // Url of the ao3 page.
     const url = window.location.href;
     // Document structure of the ao3 page.
@@ -91,8 +89,8 @@
 
   /**
    * Returns a regex to match a sequence of words, allowing an optional
-   * dash (-) or space ( ) between each word. The beginning and end of the
-   * matching sequence must be at a word boundary.
+   * dash (-), space ( ), or apostrophe (') between each word. The beginning and
+   * end of the matching sequence must be at a word boundary.
    *
    * The regex will also match an incomplete html tag preceding the match,
    * which you can check for to avoid replacing within an html tag's
@@ -102,14 +100,19 @@
    * @return {RegExp}
    */
   function wordsMatchRegex(words) {
+    // Use negative look-behind and look-ahead to make sure the character(s)
+    // around a match aren't letters, whether or not they have accent marks.
     return new RegExp(
-        '(<[a-z]+ [^>]*)?\\b(' +
+        '(<[a-z]+ [^>]*)?' +
+            '(?<![a-zA-ZāáǎàaēéěèeīíǐìiōóǒòoūúǔùuǖǘǚǜüĀÁǍÀAĒÉĚÈEĪÍǏÌIŌÓǑÒOŪÚǓÙUǕǗǙǛÜ])' +
+            '(' +
             words
                 .map(
                     word =>
                         escaped(word).replace(/([.?*+^$[\]\\(){}|])/g, '\\$1'))
-                .join('( |-)?') +
-            ')\\b',
+                .join('( |-|\')?') +
+            ')' +
+            '(?![a-zA-ZāáǎàaēéěèeīíǐìiōóǒòoūúǔùuǖǘǚǜüĀÁǍÀAĒÉĚÈEĪÍǏÌIŌÓǑÒOŪÚǓÙUǕǗǙǛÜ])',
         'gi');
   }
 
@@ -123,7 +126,8 @@
    * @return {string}
    */
   function replacementHtml(replacement, match) {
-    return '<span class="replacement" data-orig="' + match + '" data-new="' +
+    return '<span class="replacement" data-orig="' +
+        match.replaceAll('"', '&quot;') + '" data-new="' +
         escaped(replacement) + '">' + escaped(replacement) + '</span>';
   }
 
@@ -166,7 +170,7 @@
 
   /**
    * Replaces pinyin for all text in element, using the fandoms in the
-   * element's work tags to decide which rules to use.
+   * fandomParent's work tags to decide which rules to use.
    *
    * @param {HTMLElement} element
    * @param {HTMLElement} fandomParent
