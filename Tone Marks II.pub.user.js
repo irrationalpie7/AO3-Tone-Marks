@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Tone Marks II
 // @namespace    http://tampermonkey.net/
-// @version      3.0
+// @version      3.0.1
 // @description  Add tone marks on Ao3 works
 // @author       irrationalpie7
 // @match        https://archiveofourown.org/*
@@ -25,8 +25,10 @@
 (function() {
 'use strict';
 
-unsafeWindow.onload =
-    async function doTheThing() {
+unsafeWindow.document.addEventListener(
+    'DOMContentLoaded', () => doTheThing(), false);
+
+async function doTheThing() {
   // Url of the ao3 page.
   const url = unsafeWindow.location.href;
   // Document structure of the ao3 page.
@@ -59,7 +61,7 @@ unsafeWindow.onload =
   replacements.forEach(function(span) {
     span.innerHTML = span.dataset.new;
   });
-}
+});
 
 /**
  * Replaces special html characters.
