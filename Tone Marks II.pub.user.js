@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Tone Marks II
 // @namespace    http://tampermonkey.net/
-// @version      3.0.1
+// @version      3.0.2
 // @description  Add tone marks on Ao3 works
 // @author       irrationalpie7
 // @match        https://archiveofourown.org/*
@@ -44,27 +44,34 @@
             'On a works page, potentially making pinyin replacements...')
         // Don't make replacements on the new work/edit work (tag) page,
         // that sounds confusing.
-        // There should only be one "work", but whatevs
-        const work = Array.from(document.querySelectorAll('.work'));
-        for (let i = 0; i < work.length; i++) {
-          await doReplacements(work[i]);
-        }
+
+        // If we manipulate the "feedback" element or its parent, the page will
+        // reload when someone kudoses. Unfortunately, the placement of the
+        // feedback element depends on whether the work has chapters or not.
+        // Fortunately, the siblings of the feedback element will always include
+        // everything we need to care about replacing (sometimes we really just
+        // care about the one preceding sibling, but whatever, this works.)
+        Array.from(document.getElementById('feedback').parentElement.children)
+            .filter((child) => child.id !== 'feedback')
+            .forEach(async function(work) {
+              await doReplacements(work, document);
+            });
       }
     } else {
       console.log(
           'Not on a works page; going to try to do pinyin replacement per blurb...')
       // Get all the work/series blurbs
-      const blurbs = Array.from(document.querySelectorAll('.blurb'));
-      for (let i = 0; i < blurbs.length; i++) {
-        await doReplacements(blurbs[i]);
-      }
+      Array.from(document.querySelectorAll('.blurb'))
+          .forEach(async function(blurb) {
+            await doReplacements(blurb, blurb);
+          });
     }
 
     // Clean up re-replacements.
-    const replacements = Array.from(document.querySelectorAll('.replacement'));
-    replacements.forEach(function(span) {
-      span.innerHTML = span.dataset.new;
-    });
+    Array.from(document.querySelectorAll('.replacement'))
+        .forEach(function(span) {
+          span.innerHTML = span.dataset.new;
+        });
   }
   doTheThing();
 
@@ -162,8 +169,9 @@
    * element's work tags to decide which rules to use.
    *
    * @param {HTMLElement} element
+   * @param {HTMLElement} fandomParent
    */
-  async function doReplacements(element) {
+  async function doReplacements(element, fandomParent) {
     // Having a simplified element to pass to 'replaceAll' allows us to
     // avoid re-rendering the element every time its inner html gets
     // updated.
@@ -172,7 +180,7 @@
     // Anything with a 'tag' class that's a descendant of something with a
     // 'fandom' or 'fandoms' class.
     const workFandoms =
-        Array.from(element.querySelectorAll('.fandoms .tag,.fandom .tag'));
+        Array.from(fandomParent.querySelectorAll('.fandoms .tag,.fandom .tag'));
     if (hasFandom('Word of Honor|Faraway Wanderers|Qi Ye', workFandoms)) {
       replaceAll(await getReplacements('word_of_honor'), simplifiedElement);
     }
