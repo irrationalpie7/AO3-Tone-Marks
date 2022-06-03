@@ -25,7 +25,8 @@
 (function() {
 'use strict';
 
-async function doTheThing() {
+unsafeWindow.onload =
+    async function doTheThing() {
   // Url of the ao3 page.
   const url = unsafeWindow.location.href;
   // Document structure of the ao3 page.
@@ -59,7 +60,6 @@ async function doTheThing() {
     span.innerHTML = span.dataset.new;
   });
 }
-doTheThing();
 
 /**
  * Replaces special html characters.
