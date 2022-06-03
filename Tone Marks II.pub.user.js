@@ -61,7 +61,7 @@ async function doTheThing() {
   replacements.forEach(function(span) {
     span.innerHTML = span.dataset.new;
   });
-});
+}
 
 /**
  * Replaces special html characters.
