@@ -74,6 +74,8 @@ jgy|Jīn Guāngyáo
 guangyao|Guāngyáo
 meng yao|Mèng Yáo
 a yao|Ā-Yáo
+## Liǎnfāng-zūn 敛芳尊
+lian fang zun|Liǎnfāng Zūn
 ## Mo Xuanyu (莫玄羽, Mò Xuányǔ)
 mo xuanyu|Mò Xuányǔ
 mxy|Mò Xuányǔ
@@ -108,8 +110,8 @@ lan wang ji|Lán Wàngjī
 lwj|Lán Wàngjī
 lz|Lán Zhàn
 wangji|Wàngjī
-hanguang jun|Hánguāng-jūn
-hgj|Hánguāng-jūn
+hanguang jun|Hánguāng Jūn
+hgj|Hánguāng Jūn
 master lan|Master Lán
 ## Lan Qiren (蓝启仁, Lán Qǐrén)
 lan qiren|Lán Qǐrén
@@ -121,8 +123,8 @@ lh|Lán Huàn
 lan xichen|Lán Xīchén
 lxc|Lán Xīchén
 xichen|Xīchén
-zewu jun|Zéwú-jūn
-zwj|Zéwú-jūn
+zewu jun|Zéwú Jūn
+zwj|Zéwú Jūn
 ## Lan Yuan (蓝愿, Lán yuàn) courtesy name Lan Sizhui (思追, Lán Sīzhuī) and born Wen Yuan (温苑, Wēn yuàn)
 lan yuan|Lán Yuàn
 a yuan|Ā-Yuàn
@@ -156,6 +158,8 @@ huaisang|Huáisāng
 nie mingjue|Niè Míngjué
 nmj|Niè Míngjué
 mingjue|Míngjué
+## Chìfēng-zūn 赤锋尊
+chi feng zun|Chìfēng Zūn
 ## Other
 nie zonghui|Niè Zōnghuī
 nzh|Niè Zōnghuī
@@ -170,15 +174,17 @@ nie|Niè
 ## Wen Ning (温宁, Wēn Níng), courtesy name Qionglin (温琼林, Qiónglín)  Known as the Ghost General (鬼将军, Guǐ jiāngjūn)
 Wen Ning|Wēn Níng
 wn|Wēn Níng
-Wen Qionglin|Wēn Qiónglín
+Wen Qiong lin|Wēn Qiónglín
 wql|Wēn Qiónglín
-Qionglin|Qiónglín
-Gui Jiangjun|Guǐ jiāngjūn
+Qiong lin|Qiónglín
+Gui Jiang jun|Guǐ Jiāngjūn
 ## Wen Qing (温情, Wēn Qíng)
 Wen Qing|Wēn Qíng
 wq|Wēn Qíng
 ## Wen Ruohan (温若寒, Wēn Ruòhán)
-Wen Ruohan|Wēn Ruòhán
+Wen Ruo han|Wēn Ruòhán
+## common typo
+Wen Rou han|Wēn Ruòhán
 wrh|Wēn Ruòhán
 ## Wen Chao (温晁, Wēn Cháo)
 Wen Chao|Wēn Cháo
@@ -186,10 +192,11 @@ wc|Wēn Cháo
 ## Wen Xu (温旭, Wēn Xù)
 Wen Xu|Wēn Xù
 wx|Wēn Xù
-## Wen Zhuliu (Wēn Zhúliú 温逐流)
+## Wen Zhuliu (Wēn Zhúliú 温逐流) / Huàdān shǒu 化丹手 (Core-Melting Hand)
 Wen Zhu Liu|Wēn Zhúliú
 wzl|Wēn Zhúliú
 Zhu Liu|Zhúliú
+hua dan shou|Huàdān shǒu
 ## Qishan Wen Sect (岐山温氏, Qíshān Wēn Shì)
 Qishan Wen Shi|Qíshān Wēn Shì
 Qishan Wen|Qíshān Wēn
@@ -200,7 +207,7 @@ Wen|Wēn
 # misc people
 ## Sū Shè 苏涉 / Mǐnshàn 悯善
 su she|Sū Shè
-su minshan|Sū Mǐnshàn
+su min shan|Sū Mǐnshàn
 ## Song Lan (宋岚, Sòng Lán), courtesy name Song Zichen (宋子琛)
 Song Lan|Sòng Lán
 sl|Sòng Lán

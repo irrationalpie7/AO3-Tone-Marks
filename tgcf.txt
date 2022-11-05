@@ -60,11 +60,11 @@ fu yao|Fú Yáo
 feng xin|Fēng Xìn
 ## 南阳将军, Nán Yáng jiāngjūn - General Nan Yang (南 nán - southern, 阳 yáng - sun)
 ## Nan Yang Zhen Jun ?
-nan yang jiang jun|Nán Yáng jiāngjūn
-nan yang|Nán Yáng
+nan yang jiang jun|Nán Yáng Jiāngjūn
+general nan yang|General Nán Yáng
 ## 巨阳将军, Jù Yáng jiāngjūn - General Ju Yang
-ju yang jiang jun|Jù Yáng jiāngjūn
-ju yang|Jù Yáng
+ju yang jiang jun|Jù Yáng Jiāngjūn
+general ju yang|General Jù Yáng
 ## weapon: 风神弓, Fēngshén Gōng (lit. Wind God Bow)
 feng shen gong|Fēngshén Gōng
 
@@ -118,8 +118,8 @@ mei nianqing|Méi Niànqīng
 mu qing|Mù Qíng
 ## 玄真将军, Xuán Zhēn Jiāngjūn - General Xuan Zhen
 ## 玄真 xuán zhēn - enigmatic truth
-xuan zhen jiang jun|Xuán Zhēn jiāngjūn
-xuan zhen|Xuán Zhēn
+xuan zhen jiang jun|Xuán Zhēn Jiāngjūn
+general xuan zhen|General Xuán Zhēn
 # weapon: 斩马刀, Zhǎn Mǎdāo - lit. Chopping Sabre
 zhan ma dao|Zhǎn Mǎdāo
 
@@ -128,7 +128,8 @@ nan feng|Nán Fēng
 # 裴茗 - Péi Míng
 pei ming|Péi Míng
 ## 明光将军, Míng Guāng Jiāngjūn - General Ming Guang
-ming guang jiang jun|Míng Guāng jiāngjūn
+ming guang jiang jun|Míng Guāng Jiāngjūn
+general ming guang|General Míng Guāng
 ## 将军折剑, Jiāngjūn Zhē Jiàn - The General Who Broke His Sword
 jiang jun zhe jian|Jiāngjūn Zhē Jiàn
 ## Ming Guang (明光, Míng Guāng) (former sword)
@@ -138,7 +139,7 @@ pei jiang jun|Péi jiāngjūn
 ## 裴兄, Péi-xiōng - Brother Pei (to Shi Wudu)
 pei xiong|Péi xiōng
 ## 老裴, Lǎo Péi - Old Pei (to Ling Wen)
-lao pei|lǎo Péi
+lao pei|Lǎo Péi
 
 pei su|Péi Sù
 quan yizhen|Quán Yīzhēn
@@ -190,7 +191,8 @@ hua guan wu shen|Huā Guān Wǔ Shén
 ## 太子悦神, Tài Zǐ Yuè Shén - His Highness Who Pleased the Gods
 tai zi yue shen|Tàizǐ Yuè Shén
 ## 花将军, Huā Jiāng Jūn - General Huā
-hua jiang jun|Huā jiāngjūn
+hua jiang jun|Huā Jiāngjūn
+general hua|General Huā
 ## 花谢 - Huā Xiè
 hua xie|Huā Xiè
 ## 哥哥, Gēge - Older Brother (Hua Cheng)
