@@ -4,13 +4,6 @@
  * @param {boolean} includeAudio whether to include audio pronunciation
  */
 function generateCustomReplacements(parent, includeAudio) {
-  if (replacements.length === 0) {
-    console.log(
-      "No replacements to make a glossary for--aborting glossary generation."
-    );
-    return;
-  }
-
   // Document positioning. Note: this selector only works on a work page.
   const metaDescriptionList = parent.querySelector("dl.work.meta.group");
   if (metaDescriptionList === null) {
