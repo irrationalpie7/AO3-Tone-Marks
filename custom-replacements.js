@@ -1,8 +1,9 @@
 /**
  * Generate a custom replacements text area for a work page.
  * @param {HTMLElement} parent
+ * @param {boolean} includeAudio whether to include audio pronunciation
  */
-function generateCustomReplacements(parent) {
+function generateCustomReplacements(parent, includeAudio) {
   if (replacements.length === 0) {
     console.log(
       "No replacements to make a glossary for--aborting glossary generation."
@@ -38,7 +39,8 @@ function generateCustomReplacements(parent) {
       .then((rules) => replaceAll(rules, document.getElementById("main")))
       .then(
         cleanupReplacements(
-          Array.from(document.querySelectorAll(".replacement"))
+          Array.from(document.querySelectorAll(".replacement")),
+          includeAudio
         )
       );
   });

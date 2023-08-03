@@ -23,6 +23,9 @@ async function doToneMarksReplacement(includeAudio) {
         Array.from(document.querySelectorAll(".replacement")),
         document
       );
+
+      // Generate custom replacements text area
+      generateCustomReplacements(document);
     }
   } else {
     console.log(

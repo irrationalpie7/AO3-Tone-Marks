@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Tone Marks
 // @namespace    http://tampermonkey.net/
-// @version      4.5.3
+// @version      4.5.4
 // clang-format off
 // @description  Add tone marks on Ao3 works
 // @author       Cathalinaheart, irrationalpie7
@@ -13,6 +13,7 @@
 // @require      replace.js
 // @require      check-fandoms.js
 // @require      show-glossary.js
+// @require      custom-replacements.js
 // @require      mark-tones.js
 // @resource     glossary_css glossary.css
 // Generic and per-fandom replacement rules:
