@@ -28,13 +28,13 @@ function generateCustomReplacements(parent, includeAudio) {
   apply.textContent = "Apply";
   div.appendChild(apply);
   apply.addEventListener("click", () => {
-    splitReplacements(customTextArea.value)
-      .then((rules) => replaceAll(rules, document.getElementById("main")))
-      .then(
-        cleanupReplacements(
-          Array.from(document.querySelectorAll(".replacement")),
-          includeAudio
-        )
-      );
+    replaceAll(
+      splitReplacements(customTextArea.value),
+      document.getElementById("main")
+    );
+    cleanupReplacements(
+      Array.from(document.querySelectorAll(".replacement")),
+      includeAudio
+    );
   });
 }
