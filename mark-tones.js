@@ -25,7 +25,7 @@ async function doToneMarksReplacement(includeAudio) {
       );
 
       // Generate custom replacements text area
-      generateCustomReplacements(document);
+      generateCustomReplacements(document, includeAudio);
     }
   } else {
     console.log(
@@ -44,8 +44,9 @@ async function doToneMarksReplacement(includeAudio) {
 /**
  * Clean up re-replacements and add audio functionality
  * @param {HTMLElement[]} replacements
+ * @param {boolean} includeAudio whether to include audio pronunciation
  */
-async function cleanupReplacements(replacements) {
+async function cleanupReplacements(replacements, includeAudio) {
   replacements.forEach((span) => {
     span.innerHTML = span.dataset.new;
     if (includeAudio && span.dataset.url !== "None") {
