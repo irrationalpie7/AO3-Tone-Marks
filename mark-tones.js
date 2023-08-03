@@ -12,31 +12,40 @@ async function doToneMarksReplacement(includeAudio) {
   const edit_page_regex = /\/works\/[0-9]+\/edit/;
 
   if (url.match(works_regex) !== null) {
-    if (url.match(edit_page_regex) === null && !url.includes('works/new')) {
-      console.log('On a works page, potentially making pinyin replacements...');
+    if (url.match(edit_page_regex) === null && !url.includes("works/new")) {
+      console.log("On a works page, potentially making pinyin replacements...");
       // Don't make replacements on the new work/edit work (tag) page,
       // that sounds confusing.
-      await doReplacements(document.getElementById('main'));
+      await doReplacements(document.getElementById("main"));
 
       // Generate glossary. Note that this will add new '.replacement' elements.
       generateGlossary(
-          Array.from(document.querySelectorAll('.replacement')), document);
+        Array.from(document.querySelectorAll(".replacement")),
+        document
+      );
     }
   } else {
     console.log(
-        'Not on a works page; going to try to do pinyin replacement per blurb...')
+      "Not on a works page; going to try to do pinyin replacement per blurb..."
+    );
     // Get all the work/series blurbs
-    const blurbs = Array.from(document.querySelectorAll('.blurb'));
+    const blurbs = Array.from(document.querySelectorAll(".blurb"));
     for (let i = 0; i < blurbs.length; i++) {
       await doReplacements(blurbs[i]);
     }
   }
 
-  // Clean up re-replacements and add audio functionality.
-  const replacements = Array.from(document.querySelectorAll('.replacement'));
-  replacements.forEach(span => {
+  cleanupReplacements(Array.from(document.querySelectorAll(".replacement")));
+}
+
+/**
+ * Clean up re-replacements and add audio functionality
+ * @param {HTMLElement[]} replacements
+ */
+async function cleanupReplacements(replacements) {
+  replacements.forEach((span) => {
     span.innerHTML = span.dataset.new;
-    if (includeAudio && span.dataset.url !== 'None') {
+    if (includeAudio && span.dataset.url !== "None") {
       addAudioButtonAround(span);
     }
   });

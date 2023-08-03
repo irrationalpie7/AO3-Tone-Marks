@@ -4,6 +4,10 @@
  * @param {HTMLElement} span
  */
 function addAudioButtonAround(span) {
+  if (span.classList.contains("tone-audio-wrapped")) {
+    return;
+  }
+  span.classList.add("tone-audio-wrapped");
   const button = document.createElement('button');
   button.classList.add('tone-audio-button');
 
