@@ -27,7 +27,11 @@ function generateCustomReplacements(parent, includeAudio) {
   const apply = document.createElement("button");
   apply.textContent = "Apply";
   div.appendChild(apply);
+  const status = document.createElement("span");
+  div.appendChild(status);
+
   apply.addEventListener("click", () => {
+    status.textContent = "...working...";
     replaceAll(
       splitReplacements(customTextArea.value),
       document.getElementById("main")
@@ -35,6 +39,8 @@ function generateCustomReplacements(parent, includeAudio) {
     cleanupReplacements(
       Array.from(document.querySelectorAll(".replacement")),
       includeAudio
-    );
+    ).then(() => {
+      status.textContent = "complete ✓";
+    });
   });
 }
