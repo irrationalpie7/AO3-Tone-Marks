@@ -15,7 +15,7 @@ function generateCustomReplacements(parent, includeAudio) {
 
   const replacements = document.createElement("div");
   replacements.classList.add("custom-replacements");
-  replacements.classList.add(".hidden-feature");
+  replacements.classList.add("hidden-feature");
   replacements.classList.add("hide-custom-replacements");
   toneGlossary.appendChild(replacements);
 
@@ -33,14 +33,13 @@ function generateCustomReplacements(parent, includeAudio) {
   });
   document.querySelector("#glossary-button-div").append(showHideButton);
 
-  const info = document.createElement("p");
-  info.innerHTML =
-    'Below you can add custom replacement rules, for missing rules (consider <a href="https://github.com/Cathalinaheart/AO3-Tone-Marks#contributing">contributing them to the project!</a>) or one-off original characters. Each rule goes on its own line; an example would be "wen ke xing|Wēn Kèxíng" (without the quotes). The left part describes what to match, the right part describes what the replacement should be. There is more <a href="https://github.com/Cathalinaheart/AO3-Tone-Marks#the-fandomtxt-file-format">information on formatting replacement rules</a> here.';
-  replacements.appendChild(info);
-  const warning = document.createElement("p");
-  warning.innerHTML =
-    "<strong>Warning:</strong> your changes will not be saved if you leave or reload the page, so make sure to copy them somewhere else if you want to keep them.";
-  replacements.appendChild(warning);
+  const details = document.createElement("details");
+  details.innerHTML = `<summary>
+                         Custom replacements
+                       </summary>
+                       <p>Below you can add custom replacement rules, for missing rules (consider <a href="https://github.com/Cathalinaheart/AO3-Tone-Marks#contributing">contributing them to the project!</a>) or one-off original characters. Each rule goes on its own line; an example would be "wen ke xing|Wēn Kèxíng" (without the quotes). The left part describes what to match, the right part describes what the replacement should be. There is more <a href="https://github.com/Cathalinaheart/AO3-Tone-Marks#the-fandomtxt-file-format">information on formatting replacement rules</a> here.</p>
+                       <p><strong>Warning:</strong> your changes will not be saved if you leave or reload the page, so make sure to copy them somewhere else if you want to keep them.</p>`;
+  replacements.appendChild(details);
 
   const beforeUnloadListener = (event) => {
     event.preventDefault();
