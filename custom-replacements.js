@@ -15,11 +15,13 @@ function generateCustomReplacements(parent, includeAudio) {
 
   const replacements = document.createElement("div");
   replacements.classList.add("custom-replacements");
+  replacements.classList.add(".hidden-feature");
   replacements.classList.add("hide-custom-replacements");
   toneGlossary.appendChild(replacements);
 
   const showHideButton = document.createElement("button");
   showHideButton.textContent = "Add custom replacements";
+  showHideButton.classList.add("hidden-feature");
   showHideButton.addEventListener("click", () => {
     if (replacements.classList.contains("hide-custom-replacements")) {
       replacements.classList.remove("hide-custom-replacements");
@@ -31,6 +33,15 @@ function generateCustomReplacements(parent, includeAudio) {
   });
   document.querySelector("#glossary-button-div").append(showHideButton);
 
+  const info = document.createElement("p");
+  info.innerHTML =
+    'Below you can add custom replacement rules, for missing rules (consider <a href="https://github.com/Cathalinaheart/AO3-Tone-Marks#contributing">contributing them to the project!</a>) or one-off original characters. Each rule goes on its own line; an example would be "wen ke xing|Wēn Kèxíng" (without the quotes). The left part describes what to match, the right part describes what the replacement should be. There is more <a href="https://github.com/Cathalinaheart/AO3-Tone-Marks#the-fandomtxt-file-format">information on formatting replacement rules</a> here.';
+  replacements.appendChild(info);
+  const warning = document.createElement("p");
+  warning.innerHTML =
+    "<strong>Warning:</strong> your changes will not be saved if you leave or reload the page, so make sure to copy them somewhere else if you want to keep them.";
+  replacements.appendChild(warning);
+
   const beforeUnloadListener = (event) => {
     event.preventDefault();
     return (event.returnValue = "");
@@ -41,7 +52,8 @@ function generateCustomReplacements(parent, includeAudio) {
   replacements.appendChild(customTextArea);
   customTextArea.addEventListener("input", (event) => {
     // If the textarea's value is not "", warn the user before leaving the page
-    // Note: if we ever allow saving this info, we should instead compare to the loaded value.
+    // Note: if we ever allow saving this info, we should instead compare to the loaded
+    // value. Although that could cause issues if people had multiple tabs open...
     if (event.target.value !== "") {
       addEventListener("beforeunload", beforeUnloadListener, { capture: true });
     } else {

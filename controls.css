@@ -46,7 +46,7 @@
   border-style: solid;
   border-width: thin;
   padding: 10px;
-  margin: 10px 0;
+  margin-bottom: 10px;
 }
 
 #glossary-button-div button {
@@ -54,7 +54,7 @@
   margin-left: 0;
 }
 
-/* Before officially releasing, keep this feature hidden
-.custom-replacements {
+/* Before officially releasing, keep this feature hidden */
+.hidden-feature {
   display: none;
-} */
+}
