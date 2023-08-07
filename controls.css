@@ -54,7 +54,11 @@
   margin-left: 0;
 }
 
-/* Before officially releasing, keep this feature hidden */
-.hidden-feature {
-  display: none;
+.custom-replacements summary {
+  padding-bottom: .5em;
+}
+
+.custom-replacements details p {
+  margin-left: 2em;
+  margin-right: 1.5em;
 }
