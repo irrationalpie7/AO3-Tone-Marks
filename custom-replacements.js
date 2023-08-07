@@ -4,31 +4,41 @@
  * @param {boolean} includeAudio whether to include audio pronunciation
  */
 function generateCustomReplacements(parent, includeAudio) {
-  // Document positioning. Note: this selector only works on a work page.
-  const metaDescriptionList = parent.querySelector("dl.work.meta.group");
-  if (metaDescriptionList === null) {
+  // Document positioning. Note: this selector only works if we successfully made a glossary earlier.
+  const toneGlossary = parent.querySelector("dd.tone-glossary");
+  if (toneGlossary === null) {
     console.log(
       "Unable to determine where to insert custom replacements--aborting element generation."
     );
     return;
   }
 
-  const customTitle = document.createElement("dt");
-  customTitle.textContent = "Custom replacements:";
-  customTitle.classList.add("tone-custom");
-  metaDescriptionList.appendChild(customTitle);
-  const customContents = document.createElement("dd");
-  customContents.classList.add("tone-custom");
-  metaDescriptionList.appendChild(customContents);
+  const replacements = document.createElement("div");
+  replacements.classList.add("custom-replacements");
+  replacements.classList.add("hide-custom-replacements");
+  toneGlossary.appendChild(replacements);
+
+  const showHideButton = document.createElement("button");
+  showHideButton.textContent = "Add custom replacements";
+  showHideButton.addEventListener("click", () => {
+    if (replacements.classList.contains("hide-custom-replacements")) {
+      replacements.classList.remove("hide-custom-replacements");
+      showHideButton.textContent = "Hide custom replacements";
+    } else {
+      replacements.classList.add("hide-custom-replacements");
+      showHideButton.textContent = "Add custom replacements";
+    }
+  });
+  document.querySelector("#glossary-button-div").append(showHideButton);
+
   const customTextArea = document.createElement("textarea");
-  const div = document.createElement("div");
-  div.appendChild(customTextArea);
-  customContents.appendChild(div);
+  replacements.appendChild(customTextArea);
   const apply = document.createElement("button");
   apply.textContent = "Apply";
-  div.appendChild(apply);
+  replacements.appendChild(apply);
   const status = document.createElement("span");
-  div.appendChild(status);
+  status.id = "custom-replacements-status";
+  replacements.appendChild(status);
 
   apply.addEventListener("click", () => {
     status.textContent = "...working...";
@@ -40,9 +50,10 @@ function generateCustomReplacements(parent, includeAudio) {
       Array.from(document.querySelectorAll(".replacement")),
       includeAudio
     ).then(() => {
-        setTimeout(() => {
-          status.textContent = "complete ✓";
-        }, 400);
+      // change text after a short delay
+      setTimeout(() => {
+        status.textContent = "complete ✓";
+      }, 400 /* milliseconds */);
     });
   });
 }

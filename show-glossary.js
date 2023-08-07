@@ -39,7 +39,10 @@ function generateGlossary(replacements, parent) {
       showHideButton.textContent = 'Show tone glossary';
     }
   });
-  glossaryContents.appendChild(showHideButton);
+  const buttonDiv = document.createElement("div");
+  buttonDiv.id = "glossary-button-div";
+  buttonDiv.appendChild(showHideButton);
+  glossaryContents.appendChild(buttonDiv);
   glossaryContents.appendChild(glossaryList);
 }
 
