@@ -31,8 +31,26 @@ function generateCustomReplacements(parent, includeAudio) {
   });
   document.querySelector("#glossary-button-div").append(showHideButton);
 
+  const beforeUnloadListener = (event) => {
+    event.preventDefault();
+    return (event.returnValue = "");
+  };
   const customTextArea = document.createElement("textarea");
+  customTextArea.id = "custom-replacements-textarea";
+  customTextArea.value = "";
   replacements.appendChild(customTextArea);
+  customTextArea.addEventListener("input", (event) => {
+    // If the textarea's value is not "", warn the user before leaving the page
+    // Note: if we ever allow saving this info, we should instead compare to the loaded value.
+    if (event.target.value !== "") {
+      addEventListener("beforeunload", beforeUnloadListener, { capture: true });
+    } else {
+      removeEventListener("beforeunload", beforeUnloadListener, {
+        capture: true,
+      });
+    }
+  });
+
   const apply = document.createElement("button");
   apply.textContent = "Apply";
   replacements.appendChild(apply);
