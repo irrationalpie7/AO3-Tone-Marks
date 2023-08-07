@@ -40,7 +40,9 @@ function generateCustomReplacements(parent, includeAudio) {
       Array.from(document.querySelectorAll(".replacement")),
       includeAudio
     ).then(() => {
-      status.textContent = "complete ✓";
+        setTimeout(() => {
+          status.textContent = "complete ✓";
+        }, 400);
     });
   });
 }
