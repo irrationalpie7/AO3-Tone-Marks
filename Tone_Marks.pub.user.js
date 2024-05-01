@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Tone Marks
 // @namespace    http://tampermonkey.net/
-// @version      4.5.5
+// @version      4.6
 // clang-format off
 // @description  Add tone marks on Ao3 works
 // @author       Cathalinaheart, irrationalpie7
@@ -32,10 +32,10 @@
 // @grant GM_addStyle
 // ==/UserScript==
 
-(async function() {
-  'use strict';
+(async function () {
+  "use strict";
 
   await doToneMarksReplacement(/*includeAudio=*/ false);
 
-  injectCssResource('glossary_css');
+  injectCssResource("glossary_css");
 })();

@@ -4,31 +4,32 @@
  * @returns {string}
  */
 function escaped(unsafe) {
-  return (unsafe + '')
-      .replaceAll('&', '&amp;')
-      .replaceAll('<', '&lt;')
-      .replaceAll('>', '&gt;')
-      .replaceAll('"', '&quot;')
-      .replaceAll('\'', '&#039;');
+  return (unsafe + "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }
 
 /**
-* Try and match capital letters for original match in text
-* @param {string} match
-* @param {string} replacement
-* @returns {string}
-*/
-/*function capitalize(match, replacement) {
+ * Try and match capital letters for original match in text
+ * @param {string} match
+ * @param {string} replacement
+ * @returns {string}
+ */
+function capitalize(match, replacement) {
   //if the match is in allcaps and it's not an abbreviation
-  if ((match == match.toUpperCase()) && (replacement.length < 2 * match.length)){
-    console.log('all caps');
+  if (match == match.toUpperCase() && replacement.length < 2 * match.length) {
+    console.log("all caps");
     return replacement.toUpperCase();
   } else if (match.charAt(0) == match.charAt(0).toUpperCase()) {
-    console.log('first letter capital');
+    console.log("first letter capital");
     return replacement.charAt(0).toUpperCase() + replacement.substring(1);
   } else {
     return replacement;
-}*/
+  }
+}
 
 /**
  * Returns a regex to match a sequence of words, allowing an optional
@@ -46,21 +47,20 @@ function wordsMatchRegex(words) {
   // Use negative look-behind and look-ahead to make sure the character(s)
   // around a match aren't letters, whether or not they have accent marks.
   return new RegExp(
-      // optionally match an incomplete html tag
-      '(<[a-z]+ [^>]*)?' +
-          // Check for word boundary to make sure we're not e.g. replacing lan in the word plant
-          // or the second jie in jiějie
-          '(?<![a-zA-ZÀ-öø-ɏ])' +
-          '(' +
-          words
-              .map(
-                  word =>
-                      escaped(word).replace(/([.?*+^$[\]\\(){}|])/g, '\\$1'))
-              .join('( |-|\')?') +
-          ')' +
-          // Check word boundary
-          '(?![a-zA-ZÀ-öø-ɏ])',
-      'gi');
+    // optionally match an incomplete html tag
+    "(<[a-z]+ [^>]*)?" +
+      // Check for word boundary to make sure we're not e.g. replacing lan in the word plant
+      // or the second jie in jiějie
+      "(?<![a-zA-ZÀ-öø-ɏ])" +
+      "(" +
+      words
+        .map((word) => escaped(word).replace(/([.?*+^$[\]\\(){}|])/g, "\\$1"))
+        .join("( |-|')?") +
+      ")" +
+      // Check word boundary
+      "(?![a-zA-ZÀ-öø-ɏ])",
+    "gi"
+  );
 }
 
 /**
@@ -73,13 +73,13 @@ function wordsMatchRegex(words) {
  * @return {string}
  */
 function replacementHtml(replacement, match, audio_url) {
-  //const capitalizedReplacement = capitalize(match, replacement);
+  const capitalizedReplacement = capitalize(match, replacement);
   //console.log(capizalizedReplacement);
   return `<span class="replacement" lang="zh-Latn-pinyin"
             data-orig="${match}"
-            data-new="${escaped(replacement)}"
+            data-new="${escaped(capitalizedReplacement)}"
             data-url="${audio_url}">
-            ${escaped(replacement)}
+            ${escaped(capitalizedReplacement)}
           </span>`;
 }
 
@@ -93,7 +93,7 @@ function replacementHtml(replacement, match, audio_url) {
  */
 function replaceTextOnPage(main, from, to, audio_url) {
   main.innerHTML = main.innerHTML.replace(from, (match) => {
-    if (match.startsWith('<')) {
+    if (match.startsWith("<")) {
       // Skip matches occurring inside incomplete html tags. This avoids
       // e.g. replacing within the href for a work tag.
       return match;
@@ -111,9 +111,9 @@ function replaceTextOnPage(main, from, to, audio_url) {
  */
 function replaceTextNode(textNode, newInnerHtml) {
   textNode.parentNode.replaceChild(
-      textNode.ownerDocument.createRange().createContextualFragment(
-          newInnerHtml),
-      textNode);
+    textNode.ownerDocument.createRange().createContextualFragment(newInnerHtml),
+    textNode
+  );
 }
 
 /**
@@ -129,7 +129,7 @@ function recursiveReplace(replacements, element) {
   const currentChildren = Array.from(element.childNodes);
   for (const child of currentChildren) {
     if (child.nodeType === Node.TEXT_NODE) {
-      const newInnerHtml = replaceText(replacements, child.textContent)
+      const newInnerHtml = replaceText(replacements, child.textContent);
       if (newInnerHtml !== child.textContent) {
         replaceTextNode(child, newInnerHtml);
       }
@@ -149,11 +149,14 @@ function recursiveReplace(replacements, element) {
  */
 function replaceText(replacements, text) {
   // pretend text is part of an element
-  const simplifiedElement = {innerHTML: text};
-  replacements.forEach(rule => {
+  const simplifiedElement = { innerHTML: text };
+  replacements.forEach((rule) => {
     replaceTextOnPage(
-        simplifiedElement, wordsMatchRegex(rule.words), rule.replacement,
-        rule.audio_url);
+      simplifiedElement,
+      wordsMatchRegex(rule.words),
+      rule.replacement,
+      rule.audio_url
+    );
   });
   return simplifiedElement.innerHTML;
 }

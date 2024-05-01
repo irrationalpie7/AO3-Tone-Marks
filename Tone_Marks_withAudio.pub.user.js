@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Tone Marks with Audio
 // @namespace    http://tampermonkey.net/
-// @version      4.5.5
+// @version      4.6
 // clang-format off
 // @description  Add tone marks on Ao3 works, and add quick audio guide clips where available
 // @author       Cathalinaheart, irrationalpie7
@@ -35,12 +35,12 @@
 // @grant GM_addStyle
 // ==/UserScript==
 
-(async function() {
-  'use strict';
+(async function () {
+  "use strict";
 
   await doToneMarksReplacement(/*includeAudio=*/ true);
 
-  injectCssResource('IMPORTED_CSS');
-  injectCssResource('audio_css');
-  injectCssResource('glossary_css');
+  injectCssResource("IMPORTED_CSS");
+  injectCssResource("audio_css");
+  injectCssResource("glossary_css");
 })();
