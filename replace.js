@@ -21,10 +21,8 @@ function escaped(unsafe) {
 function capitalize(match, replacement) {
   //if the match is in allcaps and it's not an abbreviation
   if (match == match.toUpperCase() && replacement.length < 2 * match.length) {
-    console.log("all caps");
     return replacement.toUpperCase();
   } else if (match.charAt(0) == match.charAt(0).toUpperCase()) {
-    console.log("first letter capital");
     return replacement.charAt(0).toUpperCase() + replacement.substring(1);
   } else {
     return replacement;
@@ -74,7 +72,6 @@ function wordsMatchRegex(words) {
  */
 function replacementHtml(replacement, match, audio_url) {
   const capitalizedReplacement = capitalize(match, replacement);
-  //console.log(capizalizedReplacement);
   return `<span class="replacement" lang="zh-Latn-pinyin"
             data-orig="${match}"
             data-new="${escaped(capitalizedReplacement)}"
