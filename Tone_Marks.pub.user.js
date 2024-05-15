@@ -13,6 +13,7 @@
 // @require      replace.js
 // @require      check-fandoms.js
 // @require      show-glossary.js
+// @require      custom-replacements.js
 // @require      mark-tones.js
 // @resource     controls_css controls.css
 // Generic and per-fandom replacement rules:

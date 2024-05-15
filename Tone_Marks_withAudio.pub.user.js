@@ -14,6 +14,7 @@
 // @require      replace.js
 // @require      check-fandoms.js
 // @require      show-glossary.js
+// @require      custom-replacements.js
 // @require      mark-tones.js
 // Generic and per-fandom replacement rules:
 // @resource     generic resources/generic.txt
