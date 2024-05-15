@@ -29,19 +29,19 @@
 // @resource     parallelworld resources/parallelworld.txt
 // @resource     IMPORTED_CSS https://fonts.googleapis.com/icon?family=Material+Icons
 // @resource     audio_css audio.css
-// @resource     glossary_css glossary.css
+// @resource     controls_css controls.css
 // clang-format on
 // @grant GM.getResourceUrl
 // @grant GM_getResourceText
 // @grant GM_addStyle
 // ==/UserScript==
 
-(async function() {
-  'use strict';
+(async function () {
+  "use strict";
 
   await doToneMarksReplacement(/*includeAudio=*/ true);
 
-  injectCssResource('IMPORTED_CSS');
-  injectCssResource('audio_css');
-  injectCssResource('glossary_css');
+  injectCssResource("IMPORTED_CSS");
+  injectCssResource("audio_css");
+  injectCssResource("controls_css");
 })();

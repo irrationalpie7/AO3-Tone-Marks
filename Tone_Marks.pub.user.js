@@ -14,7 +14,7 @@
 // @require      check-fandoms.js
 // @require      show-glossary.js
 // @require      mark-tones.js
-// @resource     glossary_css glossary.css
+// @resource     controls_css controls.css
 // Generic and per-fandom replacement rules:
 // @resource     generic resources/generic.txt
 // @resource     guardian resources/guardian.txt
@@ -33,10 +33,10 @@
 // @grant GM_addStyle
 // ==/UserScript==
 
-(async function() {
-  'use strict';
+(async function () {
+  "use strict";
 
   await doToneMarksReplacement(/*includeAudio=*/ false);
 
-  injectCssResource('glossary_css');
+  injectCssResource("controls_css");
 })();
