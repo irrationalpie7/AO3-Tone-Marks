@@ -1,9 +1,12 @@
-
 /**
  * Surround span with a button that plays/pauses the audio.
  * @param {HTMLElement} span
  */
 function addAudioButtonAround(span) {
+  if (span.classList.contains('tone-audio-wrapped')) {
+    return;
+  }
+  span.classList.add('tone-audio-wrapped');
   const button = document.createElement('button');
   button.classList.add('tone-audio-button');
 
@@ -48,21 +51,22 @@ function addAudioButtonAround(span) {
   button.appendChild(audio);
   // Update the progress bar when audio position changes.
   audio.addEventListener('timeupdate', () => {
-    progress.value = Math.round(audio.currentTime * 100 / audio.duration);
+    progress.value = Math.round((audio.currentTime * 100) / audio.duration);
   });
 
   // Listen for play/pause click.
   button.addEventListener('click', () => {
     if (audio.paused) {
       // Pause all other pronunciation audio.
-      Array.from(document.querySelectorAll('.tone-audio')).forEach(audio => {
+      Array.from(document.querySelectorAll('.tone-audio')).forEach((audio) => {
         audio.pause();
       });
       // Hide other progress bars.
-      Array.from(document.querySelectorAll('.tone-audio-button progress'))
-          .forEach(progress => {
-            progress.classList.add('inactive-audio-progress-bar');
-          });
+      Array.from(
+        document.querySelectorAll('.tone-audio-button progress')
+      ).forEach((progress) => {
+        progress.classList.add('inactive-audio-progress-bar');
+      });
       progress.classList.remove('inactive-audio-progress-bar');
       audio.play();
     } else {

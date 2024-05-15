@@ -6,7 +6,8 @@
 function generateGlossary(replacements, parent) {
   if (replacements.length === 0) {
     console.log(
-        'No replacements to make a glossary for--aborting glossary generation.');
+      'No replacements to make a glossary for--aborting glossary generation.'
+    );
     return;
   }
 
@@ -14,7 +15,8 @@ function generateGlossary(replacements, parent) {
   const metaDescriptionList = parent.querySelector('dl.work.meta.group');
   if (metaDescriptionList === null) {
     console.log(
-        'Unable to determine where to insert glossary--aborting glossary generation.');
+      'Unable to determine where to insert glossary--aborting glossary generation.'
+    );
     return;
   }
 
@@ -27,7 +29,7 @@ function generateGlossary(replacements, parent) {
   metaDescriptionList.appendChild(glossaryContents);
 
   // Glossary setup.
-  const glossaryList = generateGlossaryList(replacements)
+  const glossaryList = generateGlossaryList(replacements);
   const showHideButton = document.createElement('button');
   showHideButton.textContent = 'Show tone glossary';
   showHideButton.addEventListener('click', () => {
@@ -39,7 +41,10 @@ function generateGlossary(replacements, parent) {
       showHideButton.textContent = 'Show tone glossary';
     }
   });
-  glossaryContents.appendChild(showHideButton);
+  const buttonDiv = document.createElement('div');
+  buttonDiv.id = 'glossary-button-div';
+  buttonDiv.appendChild(showHideButton);
+  glossaryContents.appendChild(buttonDiv);
   glossaryContents.appendChild(glossaryList);
 }
 
@@ -53,18 +58,18 @@ function generateGlossaryList(replacements) {
   // Sort replacements and filter by the new (replaced) version of a word, e.g.
   // jiějie
   const map = new Map(
-      replacements
-          .sort(
-              (a, b) =>
-                  getReplacementText(a).localeCompare(getReplacementText(b)))
-          .map(
-              (replacement) => [getReplacementText(replacement), replacement]));
+    replacements
+      .sort((a, b) =>
+        getReplacementText(a).localeCompare(getReplacementText(b))
+      )
+      .map((replacement) => [getReplacementText(replacement), replacement])
+  );
   const glossaryList = document.createElement('ul');
   glossaryList.classList.add('glossary-list');
-  glossaryList.classList.add('hide-glossary')
-  map.forEach(
-      (replacement, _key) =>
-          glossaryList.appendChild(generateGlossaryElement(replacement)));
+  glossaryList.classList.add('hide-glossary');
+  map.forEach((replacement, _key) =>
+    glossaryList.appendChild(generateGlossaryElement(replacement))
+  );
   return glossaryList;
 }
 

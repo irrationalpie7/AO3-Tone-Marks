@@ -20,11 +20,17 @@ async function doToneMarksReplacement(includeAudio) {
 
       // Generate glossary. Note that this will add new '.replacement' elements.
       generateGlossary(
-          Array.from(document.querySelectorAll('.replacement')), document);
+        Array.from(document.querySelectorAll('.replacement')),
+        document
+      );
+
+      // Generate custom replacements text area
+      generateCustomReplacements(document, includeAudio);
     }
   } else {
     console.log(
-        'Not on a works page; going to try to do pinyin replacement per blurb...')
+      'Not on a works page; going to try to do pinyin replacement per blurb...'
+    );
     // Get all the work/series blurbs
     const blurbs = Array.from(document.querySelectorAll('.blurb'));
     for (let i = 0; i < blurbs.length; i++) {
@@ -32,9 +38,19 @@ async function doToneMarksReplacement(includeAudio) {
     }
   }
 
-  // Clean up re-replacements and add audio functionality.
-  const replacements = Array.from(document.querySelectorAll('.replacement'));
-  replacements.forEach(span => {
+  cleanupReplacements(
+    Array.from(document.querySelectorAll('.replacement')),
+    includeAudio
+  );
+}
+
+/**
+ * Clean up re-replacements and add audio functionality
+ * @param {HTMLElement[]} replacements
+ * @param {boolean} includeAudio whether to include audio pronunciation
+ */
+async function cleanupReplacements(replacements, includeAudio) {
+  replacements.forEach((span) => {
     span.innerHTML = span.dataset.new;
     if (includeAudio && span.dataset.url !== 'None') {
       addAudioButtonAround(span);
