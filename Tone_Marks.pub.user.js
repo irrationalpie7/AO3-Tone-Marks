@@ -1,13 +1,13 @@
 // ==UserScript==
-// @name         Tone Marks
+// @name         Tone Marks (demo version)
 // @namespace    http://tampermonkey.net/
 // @version      4.6
 // clang-format off
 // @description  Add tone marks on Ao3 works
 // @author       Cathalinaheart, irrationalpie7
 // @match        https://archiveofourown.org/*
-// @updateURL    https://github.com/Cathalinaheart/AO3-Tone-Marks/raw/main/Tone_Marks.pub.user.js
-// @downloadURL  https://github.com/Cathalinaheart/AO3-Tone-Marks/raw/main/Tone_Marks.pub.user.js
+// @updateURL    https://github.com/irrationalpie7/AO3-Tone-Marks/raw/custom-rules-demo/Tone_Marks.pub.user.js
+// @downloadURL  https://github.com/irrationalpie7/AO3-Tone-Marks/raw/custom-rules-demo/Tone_Marks.pub.user.js
 //
 // @require      monkey-compatibility.js
 // @require      replace.js
